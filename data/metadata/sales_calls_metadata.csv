@@ -1,0 +1,41 @@
+call_id,employee_name,team_name,call_date,product_name,duration_seconds,sale_result,customer_intent,main_objection,customer_sentiment,agent_performance_score,objection_handling_quality,closing_attempt,call_summary,missed_opportunity,success_failure_reason,recommended_improvement
+
+CALL_001,Sarah Levi,Enterprise Sales,2026-05-01,CloudSecure,420,Sale,interested,price,positive,5,5,yes,"Customer was interested but concerned about pricing. Agent demonstrated value and secured agreement for a pilot.","Could have provided a customer success story.","Customer understood the value compared to the cost.","Use more customer success examples when discussing ROI."
+
+CALL_002,Sarah Levi,Enterprise Sales,2026-05-03,CloudSecure,390,Sale,hesitant,trust,positive,5,5,yes,"Customer initially lacked trust in the solution. Agent provided references and built credibility.","Could have shared a case study earlier in the conversation.","Trust concerns were successfully addressed.","Present social proof earlier in similar conversations."
+
+CALL_003,Sarah Levi,Enterprise Sales,2026-05-05,CRM Pro,450,Sale,price_sensitive,price,hesitant,4,4,yes,"Customer was highly price sensitive but agreed after discussing long-term savings.","Agent could have quantified savings more precisely.","Customer became convinced of the financial value.","Provide clearer ROI calculations."
+
+CALL_004,Sarah Levi,Enterprise Sales,2026-05-07,SalesBoost AI,300,Sale,interested,no_clear_objection,positive,5,5,yes,"Customer quickly saw value in the solution and agreed to proceed.","No major missed opportunity.","Strong product fit and effective closing.","Continue using discovery-based selling."
+
+CALL_005,Sarah Levi,Enterprise Sales,2026-05-09,DataFlow Analytics,240,No Sale,interested,timing,neutral,3,3,weak,"Customer liked the product but was busy with another strategic initiative.","Agent failed to secure a follow-up meeting.","Timing prevented immediate purchase.","Always define a concrete next step before ending the call."
+
+CALL_006,Daniel Cohen,Enterprise Sales,2026-05-10,CRM Pro,410,Sale,interested,price,positive,4,5,yes,"Customer hesitated due to cost but agreed after discussion of business benefits.","Could have used a stronger ROI example.","Value proposition outweighed pricing concerns.","Use measurable business outcomes during negotiations."
+
+CALL_007,Daniel Cohen,Enterprise Sales,2026-05-12,SalesBoost AI,380,Sale,hesitant,trust,positive,4,4,yes,"Customer had concerns about reliability and implementation. Agent successfully built confidence.","Could have addressed implementation concerns earlier.","Trust was established through examples and references.","Introduce implementation success stories earlier."
+
+CALL_008,Daniel Cohen,Enterprise Sales,2026-05-14,DataFlow Analytics,360,Sale,needs_more_information,no_clear_objection,positive,4,4,yes,"Customer required additional information before committing and agreed after clarification.","Agent could have anticipated common questions.","Customer received sufficient information to make a decision.","Prepare FAQ-based responses for common concerns."
+
+CALL_009,Daniel Cohen,Enterprise Sales,2026-05-16,CloudSecure,260,No Sale,price_sensitive,price,negative,2,2,weak,"Customer focused heavily on price and rejected the offer.","Agent did not sufficiently justify the value.","Customer perceived the solution as too expensive.","Strengthen value-based objection handling."
+
+CALL_010,Daniel Cohen,Enterprise Sales,2026-05-18,CRM Pro,280,No Sale,interested,competitor_comparison,neutral,2,2,no,"Customer was satisfied with a competitor solution and saw little reason to switch.","Agent did not explore weaknesses in the competitor product.","Customer remained committed to the existing solution.","Use discovery questions to uncover dissatisfaction with competitors."
+
+CALL_011,Michael Ben-David,Analytics Team,2026-05-20,DataFlow Analytics,340,Sale,interested,no_clear_objection,positive,5,5,yes,"Customer immediately recognized the value of automated reporting and agreed to move forward.","Could have discussed long-term expansion opportunities.","Strong alignment between customer needs and product capabilities.","Continue using business-focused discovery questions."
+
+CALL_012,Michael Ben-David,Analytics Team,2026-05-22,CloudSecure,430,Sale,hesitant,price,positive,4,4,yes,"Customer hesitated due to budget constraints but accepted after reviewing expected savings.","Agent could have quantified cost savings more precisely.","Customer became convinced of the financial benefits.","Prepare ROI examples for budget-sensitive customers."
+
+CALL_013,Michael Ben-David,Analytics Team,2026-05-24,SalesBoost AI,250,No Sale,interested,timing,neutral,3,3,weak,"Customer liked the solution but was unable to commit during an active internal project.","Agent failed to schedule a future discussion.","Customer postponed the decision due to competing priorities.","Always secure a follow-up date."
+
+CALL_014,Michael Ben-David,Analytics Team,2026-05-26,CRM Pro,220,No Sale,not_relevant,product_not_relevant,negative,2,2,no,"Customer felt the solution did not address their current business needs.","Agent did not sufficiently qualify the customer early in the call.","Poor product fit prevented progress.","Improve qualification before presenting the solution."
+
+CALL_015,Michael Ben-David,Analytics Team,2026-05-28,DataFlow Analytics,270,No Sale,interested,competitor_comparison,neutral,2,2,no,"Customer already used a competing analytics platform and saw little reason to switch.","Agent failed to differentiate the product effectively.","Customer remained loyal to the existing vendor.","Focus on unique differentiators during competitor discussions."
+
+CALL_016,Noa Friedman,SMB Sales,2026-05-30,CloudSecure,400,Sale,interested,trust,positive,4,5,yes,"Customer initially questioned vendor reliability but became confident after references were provided.","Could have addressed trust concerns sooner.","Trust was established and the customer agreed to proceed.","Introduce references earlier in the sales process."
+
+CALL_017,Noa Friedman,SMB Sales,2026-06-01,CRM Pro,230,No Sale,price_sensitive,price,negative,2,2,weak,"Customer focused primarily on price and did not perceive enough value.","Agent did not effectively connect benefits to business outcomes.","Pricing concerns remained unresolved.","Improve value-based selling techniques."
+
+CALL_018,Noa Friedman,SMB Sales,2026-06-03,SalesBoost AI,210,No Sale,not_relevant,product_not_relevant,negative,2,1,no,"Customer stated that the solution was not relevant to current operations.","Agent continued pitching despite weak fit.","Customer never saw a compelling use case.","Improve customer qualification and discovery."
+
+CALL_019,Noa Friedman,SMB Sales,2026-06-05,DataFlow Analytics,260,No Sale,interested,price,hesitant,2,2,weak,"Customer showed interest but declined after discussing costs.","Agent did not successfully justify the investment.","Customer viewed the price as too high.","Use stronger ROI and business impact examples."
+
+CALL_020,Noa Friedman,SMB Sales,2026-06-07,CloudSecure,280,No Sale,needs_more_information,price,neutral,3,2,weak,"Customer requested additional information and delayed the decision due to budget concerns.","Agent provided information but did not secure commitment.","Customer remained uncertain about value and pricing.","Combine information sharing with stronger closing techniques."
