@@ -39,7 +39,7 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
             <div className="flex-1 min-w-0">
               <div className="font-display font-bold text-sm lg:text-base leading-tight text-foreground">XSight</div>
               <div className="text-[10px] text-muted-foreground uppercase tracking-widest">
-                Sales Intelligence
+                
               </div>
             </div>
           </>
