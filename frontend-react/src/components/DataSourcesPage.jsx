@@ -217,7 +217,7 @@ function CallRow({ call, onClick }) {
 
       {/* Result + chevron */}
       <div className="ml-auto flex items-center gap-2 sm:gap-3 shrink-0">
-        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold border ${
+        <span className={`inline-flex items-center justify-center gap-1 w-20 py-0.5 rounded-full text-[11px] font-semibold border ${
           ok ? 'bg-success/15 text-success border-success/30' : 'bg-destructive/15 text-destructive border-destructive/30'
         }`}>
           {ok ? <CheckCircle className="size-3" /> : <XCircle className="size-3" />}
