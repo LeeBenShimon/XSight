@@ -96,7 +96,6 @@ export default function InsightsPanel() {
       ],
       sentiment,
       objections,
-      maxObj: objections[0]?.count || 1,
       alerts: [
         topObj && {
           icon: AlertTriangle, tone: 'warning',
@@ -165,10 +164,10 @@ export default function InsightsPanel() {
                 <span
                   key={t.word}
                   className="px-2.5 py-1 rounded-md bg-surface border border-border text-muted-foreground capitalize"
-                  style={{ fontSize: `${Math.max(11, Math.min(15, 10 + (t.count / insights.maxObj) * 5))}px` }}
+                  style={{ fontSize: '12px' }}
                 >
                   {t.word.replace(/_/g, ' ')}
-                  <span className="text-muted-foreground/70 ml-1 text-[10px]">{t.count}</span>
+                  <span className="text-muted-foreground/70 ml-1" style={{ fontSize: '12px' }}>{t.count}</span>
                 </span>
               ))}
             </div>

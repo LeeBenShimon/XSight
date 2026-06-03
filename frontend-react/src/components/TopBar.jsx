@@ -22,19 +22,6 @@ export default function TopBar({ onNewChat, onMobileMenuOpen, onOpenSearch }) {
         <Menu className="size-5" />
       </button>
 
-      {/* ── Title ──────────────────────────────────────────────────────── */}
-      <div className="shrink-0">
-        <h1 className="font-display font-semibold text-sm md:text-base lg:text-lg leading-tight text-foreground whitespace-nowrap">
-          Sales Call Analysis
-        </h1>
-        <div className="hidden sm:flex items-center gap-2 text-[11px] text-muted-foreground">
-          <span className="size-1.5 rounded-full bg-success animate-pulse" />
-          <span className="hidden md:inline">Knowledge Base Connected ·</span>
-          <span className="hidden md:inline">20 calls · 4 agents</span>
-          <span className="md:hidden">Live</span>
-        </div>
-      </div>
-
       {/* ── Search trigger (opens ⌘K palette; hidden below md) ──────────── */}
       <button
         onClick={onOpenSearch}
