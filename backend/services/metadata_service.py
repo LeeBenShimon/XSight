@@ -35,12 +35,15 @@ class MetadataService:
         "recommended_improvement",
     }
 
+    # Absolute path to the project root (two levels up from this file).
+    _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
     def __init__(self, csv_path: str | None = None):
-        # Path defaults to data/metadata/sales_calls_metadata.csv, but can be
-        # overridden via env var for tests / different environments.
+        # Path defaults to <project_root>/data/metadata/sales_calls_metadata.csv,
+        # resolved absolutely so it works regardless of CWD.
         self.csv_path = csv_path or os.getenv(
             "METADATA_CSV_PATH",
-            os.path.join("data", "metadata", "sales_calls_metadata.csv"),
+            os.path.join(self._PROJECT_ROOT, "data", "metadata", "sales_calls_metadata.csv"),
         )
         self._df = self._load()
 
