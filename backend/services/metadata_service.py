@@ -90,6 +90,14 @@ class MetadataService:
         mask = self._df["product_name"].str.lower() == product.strip().lower()
         return self._df[mask].to_dict(orient="records")
 
+    def get_by_id(self, call_id: str) -> dict | None:
+        """Return a single call by call_id, or None if not found."""
+        mask = self._df["call_id"].str.upper() == call_id.strip().upper()
+        rows = self._df[mask]
+        if rows.empty:
+            return None
+        return rows.iloc[0].to_dict()
+
     def get_by_agent_and_result(self, name: str, result: str) -> list[dict]:
         """Calls for an agent filtered by result, e.g. Daniel Cohen + Sale."""
         mask = (

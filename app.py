@@ -1,7 +1,7 @@
 import os
 import logging
 
-from flask import Flask, render_template
+from flask import Flask, send_from_directory
 from dotenv import load_dotenv
 
 load_dotenv()  # read .env before importing anything that needs env vars
@@ -15,21 +15,24 @@ def create_app() -> Flask:
         format="%(asctime)s %(levelname)s %(name)s: %(message)s",
     )
 
-    app = Flask(
-        __name__,
-        template_folder=os.path.join("frontend", "templates"),
-        static_folder=os.path.join("frontend", "static"),
-    )
+    dist = os.path.join(os.path.dirname(__file__), "frontend-react", "dist")
+
+    app = Flask(__name__, static_folder=dist, static_url_path="")
 
     app.register_blueprint(chat_bp)
 
     @app.route("/")
     def index():
-        return render_template("index.html")
+        return send_from_directory(app.static_folder, "index.html")
 
+    # SPA fallback — let React Router handle unknown paths
     @app.errorhandler(404)
     def not_found(_e):
-        return {"error": "Resource not found."}, 404
+        # Return index.html for unknown routes so the SPA can render them;
+        # API 404s are handled before they reach this handler.
+        if _e.description and "/api/" in str(_e.description):
+            return {"error": "Resource not found."}, 404
+        return send_from_directory(app.static_folder, "index.html")
 
     @app.errorhandler(405)
     def method_not_allowed(_e):
