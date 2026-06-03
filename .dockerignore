@@ -1,0 +1,43 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+
+# ── Frontend ───────────────────────────────────────────────────────────────────
+# node_modules are installed fresh inside the builder stage
+frontend-react/node_modules/
+# dist is built fresh inside the builder stage — never use a local copy
+frontend-react/dist/
+
+# Root-level stray node artefacts
+node_modules/
+package.json
+package-lock.json
+
+# ── Git ────────────────────────────────────────────────────────────────────────
+.git/
+.gitignore
+.gitattributes
+
+# ── IDE / OS ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ── Environment ────────────────────────────────────────────────────────────────
+# Never bake secrets into the image; pass them at runtime via --env-file
+.env
+.env.*
+
+# ── Temp / diagnostic artefacts ────────────────────────────────────────────────
+req_clean.txt
+*.log
