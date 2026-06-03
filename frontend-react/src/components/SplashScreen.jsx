@@ -30,7 +30,7 @@ export default function SplashScreen({ onDone }) {
             X<span className="gradient-text">Sight</span>
           </h1>
           <p className="text-[11px] text-muted-foreground uppercase tracking-[0.3em]">
-            Sales Intelligence Platform
+            Turn Past Calls Into Future Wins
           </p>
         </div>
 
