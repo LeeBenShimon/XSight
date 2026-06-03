@@ -229,7 +229,7 @@ export default function Dashboard({ onAsk }) {
           {/* Objection breakdown */}
           <SectionCard title="Top Objections" icon={AlertTriangle}>
             <BarList
-              items={objCounts.slice(0, 5)}
+              items={objCounts.slice(0, products.length)}
               max={objCounts[0]?.value || 1}
               barClass="bg-gradient-to-r from-warning to-warning/60"
             />
