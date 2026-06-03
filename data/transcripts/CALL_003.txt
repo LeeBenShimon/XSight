@@ -1,0 +1,62 @@
+Call ID: CALL_003
+Employee Name: Sarah Levi
+Team Name: Enterprise Sales
+Product Name: CRM Pro
+Duration Seconds: 450
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Sarah from CRM Pro. Thank you for speaking with me today.
+
+Customer: Sure.
+
+Agent: I understand you're currently evaluating customer relationship management systems. Could you tell me a bit about your current process?
+
+Customer: We're still managing most things through spreadsheets and email.
+
+Agent: How many customers does your team manage each month?
+
+Customer: Around 700 active customers.
+
+Agent: That's quite a lot. How much time do you think your team spends updating information manually?
+
+Customer: Honestly, probably several hours every week.
+
+Agent: That's exactly the problem CRM Pro is designed to solve. We centralize customer information, automate follow-ups, and reduce manual work significantly.
+
+Customer: It sounds useful, but I'm worried about the price.
+
+Agent: I understand. Can I ask what concerns you most about the pricing?
+
+Customer: We're a growing company and we're trying to keep expenses under control.
+
+Agent: That makes sense. Most of our customers initially had the same concern.
+
+Customer: What changed their minds?
+
+Agent: They realized that the time saved by automation was worth much more than the subscription cost. For example, one customer reduced administrative work by nearly 10 hours per week.
+
+Customer: That's interesting.
+
+Agent: If your team could save even a few hours each week, what impact would that have?
+
+Customer: It would definitely help productivity.
+
+Agent: Exactly. Instead of spending time updating spreadsheets, your team could focus on sales and customer relationships.
+
+Customer: I can see the value.
+
+Agent: We also offer a monthly plan, so you're not locked into a long-term commitment.
+
+Customer: That's good to know.
+
+Agent: Would you be comfortable starting with a one-month subscription to evaluate the results?
+
+Customer: Yes, I think that's reasonable.
+
+Agent: Excellent. I'll prepare the onboarding information and send it over today.
+
+Customer: Perfect. Thank you.
+
+Agent: Thank you. I'm confident you'll see value very quickly.

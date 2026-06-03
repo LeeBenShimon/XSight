@@ -1,0 +1,44 @@
+Call ID: CALL_011
+Employee Name: Michael Ben-David
+Team Name: Analytics Team
+Product Name: DataFlow Analytics
+Duration Seconds: 340
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Michael from DataFlow Analytics. Thanks for taking the time to speak with me.
+
+Customer: Happy to.
+
+Agent: I understand you're responsible for business reporting and analytics.
+
+Customer: That's right.
+
+Agent: How do you currently generate management reports?
+
+Customer: Mostly through a combination of Excel and BI dashboards.
+
+Agent: How much manual effort is involved?
+
+Customer: Quite a lot. Different teams prepare reports separately.
+
+Agent: That's exactly the challenge DataFlow Analytics helps solve. We centralize data and automate reporting workflows.
+
+Customer: That sounds useful.
+
+Agent: What would be the biggest benefit if reporting became fully automated?
+
+Customer: Faster decisions and less manual work.
+
+Agent: That's what most customers achieve within the first few months.
+
+Customer: I can definitely see the value.
+
+Agent: Would you be interested in running a pilot project?
+
+Customer: Yes, absolutely.
+
+Agent: Great. I'll send over the onboarding plan this afternoon.
+
+Customer: Looking forward to it.

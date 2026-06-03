@@ -1,0 +1,50 @@
+Call ID: CALL_015
+Employee Name: Michael Ben-David
+Team Name: Analytics Team
+Product Name: DataFlow Analytics
+Duration Seconds: 270
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Michael from DataFlow Analytics. Thank you for taking the time to speak with me.
+
+Customer: Sure.
+
+Agent: I'd like to learn a little about your current reporting and analytics process.
+
+Customer: We already use an analytics platform across the organization.
+
+Agent: How satisfied are you with it?
+
+Customer: Overall, we're very happy.
+
+Agent: That's great to hear. Are there any reporting challenges you're still facing?
+
+Customer: Nothing major. The system does what we need.
+
+Agent: Understood. DataFlow Analytics helps organizations automate reporting workflows and improve business visibility.
+
+Customer: That sounds useful, but our current platform already covers most of those capabilities.
+
+Agent: I see.
+
+Customer: We've invested a lot of time configuring dashboards and training users.
+
+Agent: That makes sense.
+
+Customer: Replacing the platform would require a strong reason.
+
+Agent: Absolutely.
+
+Customer: At the moment, I don't see enough value in switching vendors.
+
+Agent: Understood.
+
+Customer: We'll stay with our current solution for now.
+
+Agent: Thank you for your honesty.
+
+Customer: Thank you for reaching out.
+
+Agent: Have a great day.

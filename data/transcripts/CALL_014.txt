@@ -1,0 +1,50 @@
+Call ID: CALL_014
+Employee Name: Michael Ben-David
+Team Name: Analytics Team
+Product Name: CRM Pro
+Duration Seconds: 220
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Michael from CRM Pro. Thank you for taking my call.
+
+Customer: Hi.
+
+Agent: I'd love to learn a little about how your business manages customer relationships today.
+
+Customer: We're actually a very small company.
+
+Agent: How many employees do you have?
+
+Customer: Four.
+
+Agent: And how do you currently manage customer information?
+
+Customer: Mostly through email and a shared spreadsheet.
+
+Agent: I see. Are you experiencing any challenges with that process?
+
+Customer: Not really.
+
+Agent: Not at all?
+
+Customer: No. We have a small number of customers and the current process works fine for us.
+
+Agent: Understood.
+
+Customer: To be honest, I don't think we need a CRM system right now.
+
+Agent: That's fair.
+
+Customer: It sounds like a good product, but I don't think it's relevant for a business our size.
+
+Agent: I understand.
+
+Customer: Maybe in the future if we grow.
+
+Agent: Absolutely. Feel free to reach out if your needs change.
+
+Customer: Will do.
+
+Agent: Thank you for your time.

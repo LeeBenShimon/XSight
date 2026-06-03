@@ -1,0 +1,56 @@
+Call ID: CALL_017
+Employee Name: Noa Friedman
+Team Name: SMB Sales
+Product Name: CRM Pro
+Duration Seconds: 230
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Noa from CRM Pro. Thank you for taking the time to speak with me.
+
+Customer: Sure.
+
+Agent: I'd like to learn a little about how your team manages customer relationships today.
+
+Customer: We mainly use spreadsheets and email.
+
+Agent: How many customers are you managing?
+
+Customer: Around 150.
+
+Agent: Do you experience any challenges with tracking interactions or follow-ups?
+
+Customer: Sometimes, but nothing too serious.
+
+Agent: CRM Pro helps automate follow-ups, centralize customer information, and improve team visibility.
+
+Customer: Okay.
+
+Agent: Based on what you've described, I believe the platform could help improve efficiency.
+
+Customer: Maybe.
+
+Agent: Would you like to see a proposal?
+
+Customer: What's the cost?
+
+Agent: For a business your size, it would be approximately $600 per month.
+
+Customer: That's more than I expected.
+
+Agent: Many customers find the investment worthwhile.
+
+Customer: I understand, but I don't think the benefits justify the cost for us.
+
+Agent: I see.
+
+Customer: The current process works well enough.
+
+Agent: Understood.
+
+Customer: We'll pass for now.
+
+Agent: Thank you for your time.
+
+Customer: Thank you.

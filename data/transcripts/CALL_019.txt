@@ -1,0 +1,58 @@
+Call ID: CALL_019
+Employee Name: Noa Friedman
+Team Name: SMB Sales
+Product Name: DataFlow Analytics
+Duration Seconds: 260
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Noa from DataFlow Analytics. Thank you for speaking with me today.
+
+Customer: Happy to.
+
+Agent: I understand you're responsible for reporting and business analytics in your organization.
+
+Customer: That's right.
+
+Agent: Could you tell me a little about your current reporting process?
+
+Customer: We generate reports manually using several different tools.
+
+Agent: How much time does that take each week?
+
+Customer: Quite a bit. Probably 10 to 15 hours across the team.
+
+Agent: That's exactly the type of challenge our platform helps solve. We automate reporting and provide centralized dashboards.
+
+Customer: That sounds very useful.
+
+Agent: What would be the biggest benefit if reporting became automated?
+
+Customer: Saving time and reducing errors.
+
+Agent: Those are the outcomes most of our customers achieve.
+
+Customer: I can definitely see the value.
+
+Agent: Would you be interested in discussing implementation options?
+
+Customer: Possibly. What's the pricing?
+
+Agent: For an organization your size, it would be approximately $1,200 per month.
+
+Customer: That's higher than I expected.
+
+Agent: I understand.
+
+Customer: The platform sounds useful, but I don't think we can justify that expense right now.
+
+Agent: Understood.
+
+Customer: Maybe in the future when budgets are different.
+
+Agent: Of course.
+
+Customer: Thank you for the information.
+
+Agent: Thank you for your time.

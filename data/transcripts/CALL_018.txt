@@ -1,0 +1,52 @@
+Call ID: CALL_018
+Employee Name: Noa Friedman
+Team Name: SMB Sales
+Product Name: SalesBoost AI
+Duration Seconds: 210
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Noa from SalesBoost AI. Thank you for taking the time to speak with me.
+
+Customer: Sure.
+
+Agent: I'd love to learn a little about your sales process today.
+
+Customer: We actually don't have a dedicated sales team.
+
+Agent: Oh, really?
+
+Customer: Most of our business comes through referrals and repeat customers.
+
+Agent: Understood. How many people are involved in customer acquisition?
+
+Customer: Just myself and one partner.
+
+Agent: I see.
+
+Agent: SalesBoost AI helps organizations analyze sales calls, identify coaching opportunities, and improve conversion rates.
+
+Customer: That sounds useful for larger teams.
+
+Agent: That's where we typically provide the most value.
+
+Customer: We only have a handful of sales conversations each month.
+
+Agent: Understood.
+
+Customer: I don't think we have enough sales activity to justify a platform like this.
+
+Agent: That's fair.
+
+Customer: It seems like a good solution, but not for our current situation.
+
+Agent: I completely understand.
+
+Customer: Maybe if we expand in the future.
+
+Agent: We'd be happy to reconnect when that happens.
+
+Customer: Sounds good.
+
+Agent: Thank you for your time.

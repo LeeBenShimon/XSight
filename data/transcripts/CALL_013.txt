@@ -1,0 +1,46 @@
+Call ID: CALL_013
+Employee Name: Michael Ben-David
+Team Name: Analytics Team
+Product Name: SalesBoost AI
+Duration Seconds: 250
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Michael from SalesBoost AI. Thank you for taking the time to speak with me.
+
+Customer: Of course.
+
+Agent: I understand you manage a sales team. How are you currently reviewing sales performance?
+
+Customer: Mostly through CRM reports and occasional call reviews.
+
+Agent: Does that provide enough visibility into why deals are won or lost?
+
+Customer: Not always.
+
+Agent: That's exactly what SalesBoost AI helps with. We automatically analyze sales conversations and identify patterns, objections, and coaching opportunities.
+
+Customer: That sounds useful.
+
+Agent: What challenges are you currently facing with your sales process?
+
+Customer: The biggest challenge right now is actually bandwidth. We're in the middle of a company-wide transformation project.
+
+Agent: I see.
+
+Customer: Most new initiatives are on hold until that project is completed.
+
+Agent: Understood.
+
+Customer: I like what you're describing, but we simply don't have the capacity to take on another project right now.
+
+Agent: That makes sense.
+
+Customer: Maybe later this year.
+
+Agent: Absolutely. Feel free to reach out when the timing is better.
+
+Customer: Will do. Thank you.
+
+Agent: Thank you for your time.

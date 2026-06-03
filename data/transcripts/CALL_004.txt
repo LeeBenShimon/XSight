@@ -1,0 +1,54 @@
+Call ID: CALL_004
+Employee Name: Sarah Levi
+Team Name: Enterprise Sales
+Product Name: SalesBoost AI
+Duration Seconds: 300
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Sarah from SalesBoost AI. Thank you for taking the time to speak with me.
+
+Customer: Happy to.
+
+Agent: I understand you're responsible for managing your sales team. Is that correct?
+
+Customer: Yes, that's right.
+
+Agent: Could you tell me a little about how you currently track sales performance?
+
+Customer: We mostly use spreadsheets and basic CRM reports.
+
+Agent: Do you feel you have enough visibility into why deals are won or lost?
+
+Customer: Not really. That's actually one of our biggest challenges.
+
+Agent: That's exactly the problem SalesBoost AI was built to solve. We automatically analyze sales activities, identify patterns, and provide recommendations to improve conversion rates.
+
+Customer: That sounds very useful.
+
+Agent: How many sales representatives are currently on your team?
+
+Customer: About 15.
+
+Agent: And do managers regularly review sales calls?
+
+Customer: We try, but there simply isn't enough time.
+
+Agent: Our platform automatically highlights important moments in sales conversations and identifies common objections and missed opportunities.
+
+Customer: That would save us a lot of time.
+
+Agent: That's what most customers tell us. They gain visibility without spending hours reviewing calls manually.
+
+Customer: I can definitely see the value.
+
+Agent: Would you be interested in starting with a pilot for your team?
+
+Customer: Yes, absolutely.
+
+Agent: Great. I'll prepare the onboarding package and send it to you today.
+
+Customer: Perfect.
+
+Agent: Thank you. I'm looking forward to working with your team.

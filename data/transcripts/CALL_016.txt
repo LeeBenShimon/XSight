@@ -1,0 +1,54 @@
+Call ID: CALL_016
+Employee Name: Noa Friedman
+Team Name: SMB Sales
+Product Name: CloudSecure
+Duration Seconds: 400
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Noa from CloudSecure. Thank you for taking the time to speak with me.
+
+Customer: Of course.
+
+Agent: I understand you're evaluating security solutions for your company. Could you tell me a little about your current setup?
+
+Customer: We use a few different tools, but we're looking for something more centralized.
+
+Agent: That makes sense. What are your main goals?
+
+Customer: Better visibility and faster incident detection.
+
+Agent: Those are exactly the areas where CloudSecure helps. We provide centralized monitoring, automated alerts, and detailed reporting.
+
+Customer: The platform sounds interesting.
+
+Agent: What concerns do you have as you evaluate vendors?
+
+Customer: To be honest, reliability is a big concern.
+
+Agent: I completely understand. What specifically worries you?
+
+Customer: We've had bad experiences with software vendors in the past. Support was slow and issues took a long time to resolve.
+
+Agent: That's frustrating.
+
+Customer: It definitely was.
+
+Agent: One of the reasons customers choose CloudSecure is our dedicated support model. Every customer receives a designated success manager and 24/7 support access.
+
+Customer: That's reassuring.
+
+Agent: We can also connect you with customers in your industry who have been using our platform for several years.
+
+Customer: I'd appreciate that.
+
+Agent: Great. If those conversations go well, would you be comfortable moving forward with a pilot?
+
+Customer: Yes, I would.
+
+Agent: Excellent. I'll arrange everything and send you the details.
+
+Customer: Sounds good.
+
+Agent: Thank you for your time.

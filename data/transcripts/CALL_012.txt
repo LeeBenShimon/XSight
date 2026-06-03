@@ -1,0 +1,58 @@
+Call ID: CALL_012
+Employee Name: Michael Ben-David
+Team Name: Analytics Team
+Product Name: CloudSecure
+Duration Seconds: 430
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Michael from CloudSecure. Thank you for taking the time to speak with me today.
+
+Customer: Sure.
+
+Agent: I understand you're evaluating cybersecurity solutions for your company.
+
+Customer: Yes, we're reviewing several options.
+
+Agent: What are the biggest security challenges you're facing today?
+
+Customer: Visibility and threat detection are probably our biggest concerns.
+
+Agent: That's exactly where CloudSecure helps. We provide real-time monitoring, automated alerts, and centralized management.
+
+Customer: The features sound good.
+
+Agent: What criteria are most important in your evaluation process?
+
+Customer: Security capabilities and cost.
+
+Agent: That's understandable.
+
+Customer: To be honest, the pricing is my main concern right now.
+
+Agent: Could you tell me more about that?
+
+Customer: We have a limited budget this year and need to justify every expense.
+
+Agent: That makes sense. Many of our customers were in a similar situation before implementing CloudSecure.
+
+Customer: What convinced them?
+
+Agent: They realized that preventing even one major security incident could save significantly more than the annual cost of the platform.
+
+Customer: That's true.
+
+Agent: We also offer flexible subscription options, allowing organizations to start small and expand later.
+
+Customer: That would definitely make things easier.
+
+Agent: If we could stay within your budget range, would you be comfortable moving forward?
+
+Customer: Yes, I would.
+
+Agent: Great. I'll prepare a proposal that fits your requirements.
+
+Customer: Perfect.
+
+Agent: Thank you. I'll send everything over this afternoon.

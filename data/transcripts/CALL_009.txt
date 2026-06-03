@@ -1,0 +1,62 @@
+Call ID: CALL_009
+Employee Name: Daniel Cohen
+Team Name: Enterprise Sales
+Product Name: CloudSecure
+Duration Seconds: 260
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Daniel from CloudSecure. Thank you for taking my call today.
+
+Customer: Hi.
+
+Agent: I understand you're reviewing cybersecurity solutions for your organization.
+
+Customer: Yes, we're evaluating several options.
+
+Agent: Great. Could you tell me what you're looking for in a security platform?
+
+Customer: Better monitoring and threat detection.
+
+Agent: That's exactly what CloudSecure provides. We offer real-time monitoring, automated alerts, and centralized security management.
+
+Customer: Sounds useful.
+
+Agent: What security challenges are you currently facing?
+
+Customer: Mostly visibility and incident response.
+
+Agent: Those are areas where our platform can help significantly.
+
+Customer: Okay.
+
+Agent: Based on what you've told me, I think our solution would be a strong fit.
+
+Customer: What's the pricing like?
+
+Agent: Pricing depends on the package and number of users.
+
+Customer: Can you give me a rough estimate?
+
+Agent: For a company your size, it would be around $1,500 per month.
+
+Customer: That's more than I expected.
+
+Agent: Many customers find the platform worth the investment.
+
+Customer: Maybe, but that's a significant expense for us.
+
+Agent: I understand.
+
+Customer: To be honest, I don't think we can justify that cost right now.
+
+Agent: Okay.
+
+Customer: We'll probably continue evaluating other options.
+
+Agent: Understood.
+
+Customer: Thank you for the information.
+
+Agent: Thank you for your time.

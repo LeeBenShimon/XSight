@@ -1,0 +1,62 @@
+Call ID: CALL_006
+Employee Name: Daniel Cohen
+Team Name: Enterprise Sales
+Product Name: CRM Pro
+Duration Seconds: 410
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Daniel from CRM Pro. Thank you for taking my call.
+
+Customer: Hi Daniel.
+
+Agent: I understand your team is looking for ways to improve customer management processes. Could you tell me how you're handling customer information today?
+
+Customer: We mainly use spreadsheets and shared documents.
+
+Agent: How well is that working for your team?
+
+Customer: Honestly, it's becoming difficult to keep everything updated.
+
+Agent: That's very common as companies grow. How many active customers are you managing?
+
+Customer: Around 600.
+
+Agent: That's a significant number. CRM Pro centralizes all customer information, automates follow-ups, and helps teams avoid missed opportunities.
+
+Customer: It sounds useful.
+
+Agent: What would be the biggest benefit for your team if customer information was always up to date?
+
+Customer: Better visibility and less manual work.
+
+Agent: Exactly.
+
+Customer: My only concern is the cost.
+
+Agent: I understand. Many customers initially focus on the subscription price.
+
+Customer: Yes, we're trying to control expenses.
+
+Agent: That's completely reasonable. May I ask how many hours your team spends every week updating spreadsheets?
+
+Customer: Probably 8 to 10 hours.
+
+Agent: If those hours were redirected toward sales activities instead, would that create value for the business?
+
+Customer: Definitely.
+
+Agent: That's why many customers find the platform pays for itself very quickly.
+
+Customer: That's a good way to look at it.
+
+Agent: Would you be open to starting with a monthly plan and evaluating the results?
+
+Customer: Yes, I think that makes sense.
+
+Agent: Great. I'll send over the onboarding details and get everything set up.
+
+Customer: Perfect.
+
+Agent: Thank you for your time.

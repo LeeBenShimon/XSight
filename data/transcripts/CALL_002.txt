@@ -1,0 +1,54 @@
+Call ID: CALL_002
+Employee Name: Sarah Levi
+Team Name: Enterprise Sales
+Product Name: CloudSecure
+Duration Seconds: 390
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Sarah from CloudSecure. Thank you for taking the time to speak with me today.
+
+Customer: Sure.
+
+Agent: I understand you're evaluating cybersecurity platforms for your organization. Could you tell me a bit about what you're looking for?
+
+Customer: We're looking for better monitoring and incident detection, but we're being very careful about selecting a vendor.
+
+Agent: That's completely understandable. What are your main concerns?
+
+Customer: To be honest, trust is the biggest one. There are so many vendors in the market, and it's hard to know who will actually deliver.
+
+Agent: I hear that from many organizations. How long have you been using your current solution?
+
+Customer: About three years.
+
+Agent: And are you satisfied with the support and visibility you're getting today?
+
+Customer: Not really. Support has been slow, and we've had a few incidents that weren't detected quickly enough.
+
+Agent: That sounds frustrating. One thing our customers consistently mention is the quality of our support team and response times.
+
+Customer: Every vendor says that.
+
+Agent: That's fair. Instead of taking my word for it, I can share references from companies in your industry that have been using our platform for several years.
+
+Customer: That would definitely help.
+
+Agent: We also maintain a 99.9% service availability record and provide dedicated onboarding specialists for every customer.
+
+Customer: That's reassuring.
+
+Agent: Would it be useful if I arranged a reference call with one of our existing customers?
+
+Customer: Yes, I'd like that.
+
+Agent: Great. If the reference call goes well, would you be open to moving forward with a pilot?
+
+Customer: Yes, I think that's reasonable.
+
+Agent: Excellent. I'll schedule the reference call and send over the details today.
+
+Customer: Sounds good. Thank you.
+
+Agent: Thank you for your time. I look forward to working together.

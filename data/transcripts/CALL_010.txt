@@ -1,0 +1,54 @@
+Call ID: CALL_010
+Employee Name: Daniel Cohen
+Team Name: Enterprise Sales
+Product Name: CRM Pro
+Duration Seconds: 280
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Daniel from CRM Pro. Thank you for taking the time to speak with me today.
+
+Customer: No problem.
+
+Agent: I understand your company uses a CRM platform today. Is that correct?
+
+Customer: Yes, we've been using one for several years.
+
+Agent: How satisfied are you with your current solution?
+
+Customer: Overall, we're pretty happy with it.
+
+Agent: That's good to hear. Are there any areas where you feel it could be improved?
+
+Customer: Nothing major. It does what we need.
+
+Agent: Understood. CRM Pro helps organizations automate follow-ups, improve reporting, and centralize customer information.
+
+Customer: Our current platform already covers most of that.
+
+Agent: I see.
+
+Customer: We're also heavily invested in it at this point.
+
+Agent: That makes sense.
+
+Customer: We've spent years configuring workflows and training employees.
+
+Agent: Understood.
+
+Customer: Switching systems would be a significant effort.
+
+Agent: That's fair.
+
+Customer: Unless there was a major advantage, I don't think we'd consider changing vendors.
+
+Agent: I understand.
+
+Customer: We're probably going to stay with our current solution.
+
+Agent: Thank you for your honesty.
+
+Customer: Thank you for the information.
+
+Agent: Have a great day.

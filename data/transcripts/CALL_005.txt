@@ -1,0 +1,58 @@
+Call ID: CALL_005
+Employee Name: Sarah Levi
+Team Name: Enterprise Sales
+Product Name: DataFlow Analytics
+Duration Seconds: 240
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Sarah from DataFlow Analytics. Thank you for taking the time to speak with me.
+
+Customer: Of course.
+
+Agent: I understand your team spends a lot of time creating reports manually. Is that correct?
+
+Customer: Yes, that's true.
+
+Agent: How much time would you estimate is spent on reporting each week?
+
+Customer: Probably 15 to 20 hours across the team.
+
+Agent: That's quite significant. Our platform automates reporting and dashboard generation, helping teams save time and improve visibility.
+
+Customer: That definitely sounds useful.
+
+Agent: What reporting tools are you currently using?
+
+Customer: Mostly Excel and some internal dashboards.
+
+Agent: I see. Many of our customers moved from similar processes and reduced reporting effort dramatically.
+
+Customer: I can believe that.
+
+Agent: Do you think automation is something your organization is actively looking at right now?
+
+Customer: The problem is that we're currently in the middle of a major ERP implementation project.
+
+Agent: Understood.
+
+Customer: Honestly, all new initiatives are on hold until that project is completed.
+
+Agent: That makes sense.
+
+Customer: I actually like what you're describing, but this isn't the right timing for us.
+
+Agent: I completely understand.
+
+Customer: Maybe in a few months things will be different.
+
+Agent: Would it make sense if I checked back with you later this year?
+
+Customer: Yes, that would be fine.
+
+Agent: Great. I'll follow up in a few months.
+
+Customer: Sounds good. Thank you.
+
+Agent: Thank you for your time.

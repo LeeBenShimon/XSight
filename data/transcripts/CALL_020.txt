@@ -1,0 +1,58 @@
+Call ID: CALL_020
+Employee Name: Noa Friedman
+Team Name: SMB Sales
+Product Name: CloudSecure
+Duration Seconds: 280
+Sale Result: No Sale
+
+Transcript:
+
+Agent: Hi, this is Noa from CloudSecure. Thank you for taking the time to speak with me.
+
+Customer: Of course.
+
+Agent: I understand you're evaluating cybersecurity solutions for your organization.
+
+Customer: Yes, we're reviewing a few options.
+
+Agent: Could you tell me what you're looking for in a security platform?
+
+Customer: Better visibility, monitoring, and compliance support.
+
+Agent: Those are exactly the areas where CloudSecure helps. We provide centralized monitoring, automated alerts, and compliance reporting.
+
+Customer: That sounds interesting.
+
+Agent: What are the most important factors in your decision-making process?
+
+Customer: We need to understand implementation effort, long-term costs, and expected value.
+
+Agent: Absolutely. We provide onboarding support and most customers are fully operational within a few weeks.
+
+Customer: That's good to know.
+
+Agent: Based on what we've discussed, do you think the solution could address your needs?
+
+Customer: Potentially, yes.
+
+Agent: Great. Do you have any concerns at this stage?
+
+Customer: Pricing is still a concern.
+
+Agent: I understand.
+
+Customer: I'd like to review more information before making any decision.
+
+Agent: Of course.
+
+Customer: I'd also like to compare your proposal with a few other vendors.
+
+Agent: That makes sense.
+
+Customer: Once we review everything internally, we'll decide how to proceed.
+
+Agent: Understood. I'll send over the information package and pricing details.
+
+Customer: Thank you.
+
+Agent: Thank you for your time.

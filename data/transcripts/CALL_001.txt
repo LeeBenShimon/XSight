@@ -1,0 +1,38 @@
+Call ID: CALL_001
+Employee Name: Sarah Levi
+Team Name: Enterprise Sales
+Product Name: CloudSecure
+Duration Seconds: 420
+Sale Result: Sale
+
+Transcript:
+
+Agent: Hi, this is Sarah from CloudSecure. Thank you for taking the time to speak with me today.
+
+Customer: Of course.
+
+Agent: I understand you're reviewing cybersecurity solutions for your organization. Could you tell me a little about your current environment?
+
+Customer: We currently use some basic security tools, but we're looking for something more comprehensive.
+
+Agent: That makes sense. What are the main challenges you're facing today?
+
+Customer: Visibility and monitoring. We're worried about potential security incidents.
+
+Agent: That's exactly where CloudSecure helps. We provide real-time monitoring, automated alerts, and centralized management.
+
+Customer: It sounds useful, but I'm concerned about the cost.
+
+Agent: That's a common concern. Most of our customers found that preventing even a single security incident saved significantly more than the subscription cost.
+
+Customer: That's a good point.
+
+Agent: We also offer a pilot program so you can evaluate the platform before making a larger commitment.
+
+Customer: That sounds reasonable.
+
+Agent: Would you be interested in starting a pilot next week?
+
+Customer: Yes, let's move forward.
+
+Agent: Excellent. I'll send you the onboarding details this afternoon.
