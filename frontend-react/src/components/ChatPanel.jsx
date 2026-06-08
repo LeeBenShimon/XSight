@@ -68,14 +68,14 @@ function ComparisonChart({ successful: s, unsuccessful: u }) {
       {/* 1 col mobile → 2 col sm+ */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
         <div className="bg-surface-elevated rounded-lg p-2.5 border border-border">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">Successful avg</p>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Successful avg</p>
           <p className="text-sm font-bold text-success">{fmt(s.avg_duration_seconds)}</p>
-          <p className="text-[10px] text-muted-foreground">{s.count} calls · top: {s.top_objection}</p>
+          <p className="text-xs text-muted-foreground">{s.count} calls · top: {s.top_objection}</p>
         </div>
         <div className="bg-surface-elevated rounded-lg p-2.5 border border-border">
-          <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">Unsuccessful avg</p>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Unsuccessful avg</p>
           <p className="text-sm font-bold text-muted-foreground">{fmt(u.avg_duration_seconds)}</p>
-          <p className="text-[10px] text-muted-foreground">{u.count} calls · top: {u.top_objection}</p>
+          <p className="text-xs text-muted-foreground">{u.count} calls · top: {u.top_objection}</p>
         </div>
       </div>
       <div style={{ height: 80 }}>
@@ -108,7 +108,7 @@ function AgentMetrics({ data }) {
     <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 gap-2">
       {pills.map(p => (
         <div key={p.label} className="glass rounded-xl p-2.5 sm:p-3">
-          <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{p.label}</div>
+          <div className="text-xs text-muted-foreground uppercase tracking-wider">{p.label}</div>
           <div className="flex items-baseline gap-1.5 mt-1">
             <span className="font-display font-bold text-base sm:text-lg gradient-text">{p.value}</span>
             {p.label === 'Win Rate' && data.win_rate > 0.6 && (
@@ -138,7 +138,7 @@ function CallCard({ callId }) {
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-xs lg:text-sm font-semibold text-foreground truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{callId}</p>
-        <p className="text-[10px] text-muted-foreground">Sales transcript</p>
+        <p className="text-xs text-muted-foreground">Sales transcript</p>
       </div>
       <TrendingUp className="size-3 text-muted-foreground shrink-0" />
     </div>
@@ -180,9 +180,9 @@ function BotBubble({ message }) {
 
   const engineBadge = () => {
     if (message.sourceEngine === 'analytics')
-      return <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-success/15 text-success border border-success/20 whitespace-nowrap">⊞ Computed</span>
+      return <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-success/15 text-success border border-success/20 whitespace-nowrap">⊞ Computed</span>
     if (message.sourceEngine === 'bedrock' || message.sourceEngine === 'knowledge')
-      return <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/20 whitespace-nowrap">◈ Knowledge Base</span>
+      return <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/20 whitespace-nowrap">◈ Knowledge Base</span>
     return null
   }
 
@@ -216,7 +216,7 @@ function BotBubble({ message }) {
 
         {message.citations && message.citations.length > 0 && (
           <div className="glass rounded-xl p-2.5 sm:p-3 space-y-2">
-            <div className="flex items-center gap-2 text-[11px] lg:text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
               <FileText className="size-3 shrink-0" />
               Sources ({message.citations.length})
             </div>
@@ -226,7 +226,7 @@ function BotBubble({ message }) {
                   {typeof c === 'string'
                     ? <div className="text-muted-foreground italic">{c}</div>
                     : <>
-                        {c.source && <div className="text-[10px] font-semibold text-primary mb-1">{c.source}</div>}
+                        {c.source && <div className="text-xs font-semibold text-primary mb-1">{c.source}</div>}
                         <div className="text-muted-foreground italic">{c.content || c.text || JSON.stringify(c)}</div>
                       </>
                   }
@@ -418,11 +418,11 @@ export default function ChatPanel({ messages, isLoading, onSend }) {
           </div>
 
           <div className="flex items-center justify-between mt-1.5 sm:mt-2 px-0.5">
-            <div className="text-[10px] text-muted-foreground flex items-center gap-1.5 min-w-0">
+            <div className="text-xs text-muted-foreground flex items-center gap-1.5 min-w-0">
               <Sparkles className="size-3 shrink-0" />
               <span className="truncate">Powered by Amazon Bedrock · Deterministic Analytics</span>
             </div>
-            <div className="text-[10px] text-muted-foreground hidden md:block shrink-0 ml-2">
+            <div className="text-xs text-muted-foreground hidden md:block shrink-0 ml-2">
               Enter to send
             </div>
           </div>

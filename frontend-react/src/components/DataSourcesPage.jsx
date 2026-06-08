@@ -53,7 +53,7 @@ function TranscriptLine({ line }) {
 
   return (
     <div className={`flex gap-3 ${isAgent ? '' : 'flex-row-reverse'}`}>
-      <div className={`size-7 rounded-full shrink-0 grid place-items-center text-[10px] font-bold text-primary-foreground ${
+      <div className={`size-7 rounded-full shrink-0 grid place-items-center text-xs font-bold text-primary-foreground ${
         isAgent ? 'bg-gradient-to-br from-primary to-accent-cyan' : 'bg-surface-elevated border border-border text-muted-foreground'
       }`}>
         {isAgent ? 'A' : 'C'}
@@ -63,7 +63,7 @@ function TranscriptLine({ line }) {
           ? 'bg-primary/10 border border-primary/20 text-foreground rounded-tl-none'
           : 'bg-surface-elevated border border-border text-foreground/90 rounded-tr-none'
       }`}>
-        <div className={`text-[10px] font-semibold mb-1 ${isAgent ? 'text-primary' : 'text-muted-foreground'}`}>
+        <div className={`text-xs font-semibold mb-1 ${isAgent ? 'text-primary' : 'text-muted-foreground'}`}>
           {speaker}
         </div>
         {text}
@@ -137,7 +137,7 @@ function CallDetail({ call, onBack }) {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
           {meta.map(({ icon: Icon, label, value }) => (
             <div key={label} className="glass rounded-xl p-3">
-              <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground uppercase tracking-wider mb-1">
+              <div className="flex items-center gap-1.5 text-xs text-muted-foreground uppercase tracking-wider mb-1">
                 <Icon className="size-3" />{label}
               </div>
               <div className="text-sm lg:text-base font-semibold text-foreground truncate">{value}</div>
@@ -148,15 +148,15 @@ function CallDetail({ call, onBack }) {
         {/* Scores row */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="glass rounded-xl p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">Performance Score</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Performance Score</div>
             <ScoreDots value={call.agent_performance_score} />
           </div>
           <div className="glass rounded-xl p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">Objection Handling</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Objection Handling</div>
             <ScoreDots value={call.objection_handling_quality} />
           </div>
           <div className="glass rounded-xl p-3">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">Closing Attempt</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Closing Attempt</div>
             <div className={`text-sm font-semibold ${call.closing_attempt === 'yes' ? 'text-success' : 'text-muted-foreground'}`}>
               {call.closing_attempt === 'yes' ? '✓ Yes' : call.closing_attempt === 'weak' ? '~ Weak' : '✗ No'}
             </div>
@@ -227,7 +227,7 @@ function CallRow({ call, onClick }) {
             <div className="text-sm font-semibold text-foreground truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
               {call._filename ?? `${call.call_id}.txt`}
             </div>
-            <div className="text-[11px] text-muted-foreground truncate">Awaiting analysis</div>
+            <div className="text-xs text-muted-foreground truncate">Awaiting analysis</div>
           </div>
 
           {/* Upload date — sm+ */}
@@ -239,7 +239,7 @@ function CallRow({ call, onClick }) {
 
           {/* Pending badge + chevron */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <span className="inline-flex items-center justify-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border
+            <span className="inline-flex items-center justify-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold border
                              bg-warning/15 text-warning border-warning/30">
               <Clock className="size-3" />
               <span className="hidden sm:inline">Pending</span>
@@ -254,13 +254,13 @@ function CallRow({ call, onClick }) {
             <div className="text-sm font-semibold text-foreground truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
               {call.call_id}
             </div>
-            <div className="text-[11px] text-muted-foreground truncate">{call.product_name}</div>
+            <div className="text-xs text-muted-foreground truncate">{call.product_name}</div>
           </div>
 
           {/* Agent — hidden on mobile */}
           <div className="hidden md:block min-w-0 flex-1">
             <div className="text-sm text-foreground/90 truncate">{call.employee_name}</div>
-            <div className="text-[11px] text-muted-foreground truncate">{call.team_name}</div>
+            <div className="text-xs text-muted-foreground truncate">{call.team_name}</div>
           </div>
 
           {/* Date — lg+ */}
@@ -281,7 +281,7 @@ function CallRow({ call, onClick }) {
 
           {/* Result + chevron */}
           <div className="ml-auto flex items-center gap-2 sm:gap-3 shrink-0">
-            <span className={`inline-flex items-center justify-center gap-1 w-20 py-0.5 rounded-full text-[11px] font-semibold border ${
+            <span className={`inline-flex items-center justify-center gap-1 w-20 py-0.5 rounded-full text-xs font-semibold border ${
               ok ? 'bg-success/15 text-success border-success/30' : 'bg-destructive/15 text-destructive border-destructive/30'
             }`}>
               {ok ? <CheckCircle className="size-3" /> : <XCircle className="size-3" />}

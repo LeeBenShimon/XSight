@@ -14,7 +14,7 @@ const jitter = () => (Math.random() - 0.5) * 0.34
 
 const AXIS = '#64748b'
 const GRID = '#1e2a3a'
-const baseScaleTicks = { color: AXIS, font: { size: 11 } }
+const baseScaleTicks = { color: AXIS, font: { size: 13 } }
 
 function SectionCard({ title, icon: Icon, hint, children, className = '' }) {
   return (
@@ -24,7 +24,7 @@ function SectionCard({ title, icon: Icon, hint, children, className = '' }) {
           {Icon && <Icon className="size-4 text-muted-foreground" />}
           <h3 className="font-display font-semibold text-sm lg:text-base text-foreground">{title}</h3>
         </div>
-        {hint && <span className="text-[11px] text-muted-foreground text-right max-w-[55%]">{hint}</span>}
+        {hint && <span className="text-xs text-muted-foreground text-right max-w-[55%]">{hint}</span>}
       </div>
       {children}
     </div>
@@ -213,12 +213,12 @@ export default function Analytics({ onAsk }) {
               <Scatter data={scatterData} options={{
                 maintainAspectRatio: false,
                 plugins: {
-                  legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 11 }, boxWidth: 10, boxHeight: 10, usePointStyle: true } },
+                  legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 13 }, boxWidth: 10, boxHeight: 10, usePointStyle: true } },
                   tooltip: { callbacks: { label: ctx => ` ${ctx.raw.id}: perf ${Math.round(ctx.raw.x)}, obj ${Math.round(ctx.raw.y)}` } },
                 },
                 scales: {
-                  x: { min: 0.5, max: 5.5, title: { display: true, text: 'Performance', color: AXIS, font: { size: 11 } }, ticks: { ...baseScaleTicks, stepSize: 1 }, grid: { color: GRID } },
-                  y: { min: 0.5, max: 5.5, title: { display: true, text: 'Objection handling', color: AXIS, font: { size: 11 } }, ticks: { ...baseScaleTicks, stepSize: 1 }, grid: { color: GRID } },
+                  x: { min: 0.5, max: 5.5, title: { display: true, text: 'Performance', color: AXIS, font: { size: 13 } }, ticks: { ...baseScaleTicks, stepSize: 1 }, grid: { color: GRID } },
+                  y: { min: 0.5, max: 5.5, title: { display: true, text: 'Objection handling', color: AXIS, font: { size: 13 } }, ticks: { ...baseScaleTicks, stepSize: 1 }, grid: { color: GRID } },
                 },
               }} />
             </div>
@@ -236,11 +236,11 @@ export default function Analytics({ onAsk }) {
                 },
                 scales: {
                   x: { min: 0, ticks: { ...baseScaleTicks, callback: v => `${v}m` }, grid: { color: GRID } },
-                  y: { ticks: { color: '#94a3b8', font: { size: 12 } }, grid: { display: false } },
+                  y: { ticks: { color: '#94a3b8', font: { size: 13 } }, grid: { display: false } },
                 },
               }} />
             </div>
-            <p className="text-[11px] text-muted-foreground mt-3">
+            <p className="text-xs text-muted-foreground mt-3">
               Won calls run {((durWon - durLost) / 60).toFixed(1)} min longer on average — discovery depth tracks with closing.
             </p>
           </SectionCard>
@@ -271,9 +271,9 @@ export default function Analytics({ onAsk }) {
               <table className="w-full border-separate border-spacing-1 min-w-[520px]">
                 <thead>
                   <tr>
-                    <th className="text-left text-[11px] font-semibold text-muted-foreground uppercase tracking-wider p-2">Rep</th>
+                    <th className="text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider p-2">Rep</th>
                     {products.map(p => (
-                      <th key={p} className="text-center text-[11px] font-medium text-muted-foreground p-2">{p}</th>
+                      <th key={p} className="text-center text-xs font-medium text-muted-foreground p-2">{p}</th>
                     ))}
                   </tr>
                 </thead>

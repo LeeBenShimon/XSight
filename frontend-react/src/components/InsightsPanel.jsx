@@ -9,12 +9,12 @@ function MetricCard({ icon: Icon, label, value, delta, positive }) {
     <div className="glass rounded-xl p-3">
       <div className="flex items-center justify-between mb-2">
         <Icon className="size-3.5 text-muted-foreground" />
-        <span className={`text-[10px] font-semibold ${positive ? 'text-success' : 'text-muted-foreground'}`}>
+        <span className={`text-xs font-semibold ${positive ? 'text-success' : 'text-muted-foreground'}`}>
           {delta}
         </span>
       </div>
       <div className="font-display font-bold text-lg xl:text-xl leading-none text-foreground">{value}</div>
-      <div className="text-[10px] text-muted-foreground mt-1">{label}</div>
+      <div className="text-xs text-muted-foreground mt-1">{label}</div>
     </div>
   )
 }
@@ -30,7 +30,7 @@ function AlertCard({ icon: Icon, tone, title, desc }) {
       <Icon className={`size-4 shrink-0 mt-0.5 ${iconClass}`} />
       <div className="min-w-0">
         <div className="text-xs xl:text-sm font-semibold text-foreground">{title}</div>
-        <div className="text-[11px] xl:text-xs text-muted-foreground mt-0.5 leading-snug">{desc}</div>
+        <div className="text-xs text-muted-foreground mt-0.5 leading-snug">{desc}</div>
       </div>
     </div>
   )
@@ -115,7 +115,7 @@ export default function InsightsPanel() {
     <aside className="hidden lg:flex flex-col w-full border-l border-border bg-surface/40 backdrop-blur-xl overflow-y-auto">
       <div className="p-4 xl:p-5 border-b border-border min-h-[3.5rem] md:min-h-[4rem] flex flex-col justify-center">
         <h2 className="font-display font-semibold text-sm xl:text-base text-foreground">Real-Time Insights</h2>
-        <p className="text-[11px] text-muted-foreground mt-0.5">Live data · {calls.length || '…'} calls</p>
+        <p className="text-xs text-muted-foreground mt-0.5">Live data · {calls.length || '…'} calls</p>
       </div>
 
       {!insights ? (
@@ -124,7 +124,7 @@ export default function InsightsPanel() {
         <div className="p-3 xl:p-4 space-y-3 xl:space-y-4">
           {/* Key metrics */}
           <div>
-            <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-2">Key Metrics</div>
+            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Key Metrics</div>
             <div className="grid grid-cols-2 gap-2">
               {insights.metrics.map(m => <MetricCard key={m.label} {...m} />)}
             </div>
@@ -132,7 +132,7 @@ export default function InsightsPanel() {
 
           {/* Sentiment */}
           <div>
-            <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-2">Call Sentiment</div>
+            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Call Sentiment</div>
             <div className="glass rounded-xl p-4 space-y-3">
               {insights.sentiment.map(s => (
                 <div key={s.label}>
@@ -150,7 +150,7 @@ export default function InsightsPanel() {
 
           {/* Alerts */}
           <div>
-            <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-2">Active Alerts</div>
+            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Active Alerts</div>
             <div className="space-y-2">
               {insights.alerts.map(a => <AlertCard key={a.title} {...a} />)}
             </div>
@@ -158,16 +158,15 @@ export default function InsightsPanel() {
 
           {/* Top objections — sized by real frequency */}
           <div>
-            <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-2">Top Objections</div>
+            <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-2">Top Objections</div>
             <div className="flex flex-wrap gap-1.5">
               {insights.objections.map(t => (
                 <span
                   key={t.word}
-                  className="px-2.5 py-1 rounded-md bg-surface border border-border text-muted-foreground capitalize"
-                  style={{ fontSize: '12px' }}
+                  className="px-2.5 py-1 rounded-md bg-surface border border-border text-muted-foreground capitalize text-xs"
                 >
                   {t.word.replace(/_/g, ' ')}
-                  <span className="text-muted-foreground/70 ml-1" style={{ fontSize: '12px' }}>{t.count}</span>
+                  <span className="text-muted-foreground/70 ml-1 text-xs">{t.count}</span>
                 </span>
               ))}
             </div>

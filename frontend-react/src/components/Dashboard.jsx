@@ -25,7 +25,7 @@ function Kpi({ icon: Icon, label, value, sub, tone = 'default' }) {
         <div className="size-9 rounded-xl bg-primary/10 border border-primary/20 grid place-items-center">
           <Icon className="size-4 text-primary" />
         </div>
-        {sub && <span className={`text-[11px] font-semibold ${toneRing}`}>{sub}</span>}
+        {sub && <span className={`text-xs font-semibold ${toneRing}`}>{sub}</span>}
       </div>
       <div>
         <div className="font-display font-bold text-2xl lg:text-3xl leading-none gradient-text">{value}</div>
@@ -207,7 +207,7 @@ export default function Dashboard({ onAsk }) {
                 <div className="absolute inset-0 grid place-items-center pointer-events-none">
                   <div className="text-center">
                     <div className="font-display font-bold text-xl lg:text-2xl text-foreground">{pct(overall.winRate)}</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">win</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">win</div>
                   </div>
                 </div>
               </div>
@@ -257,7 +257,7 @@ export default function Dashboard({ onAsk }) {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="text-sm lg:text-base font-semibold text-foreground truncate">{a.name}</div>
-                    <div className="text-[11px] text-muted-foreground">{a.count} calls · perf {a.avgPerf.toFixed(1)}</div>
+                    <div className="text-xs text-muted-foreground">{a.count} calls · perf {a.avgPerf.toFixed(1)}</div>
                   </div>
                   <div className="w-28 hidden sm:block">
                     <div className="h-1.5 bg-input rounded-full overflow-hidden">

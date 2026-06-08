@@ -38,7 +38,7 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
             </div>
             <div className="flex-1 min-w-0">
               <div className="font-display font-bold text-sm lg:text-base leading-tight text-foreground">XSight</div>
-              <div className="text-[10px] text-muted-foreground uppercase tracking-widest">
+              <div className="text-xs text-muted-foreground uppercase tracking-widest">
                 
               </div>
             </div>
@@ -58,7 +58,7 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
       {/* Navigation */}
       <nav className="flex-1 p-2 space-y-0.5 overflow-y-auto min-h-0">
         {!collapsed && (
-          <div className="px-3 pb-1.5 pt-1 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+          <div className="px-3 pb-1.5 pt-1 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
             Navigation
           </div>
         )}
@@ -81,7 +81,7 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
               <>
                 <span className="flex-1 text-left truncate">{item.label}</span>
                 {item.badge && (
-                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-primary/20 text-primary shrink-0">
+                  <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-primary/20 text-primary shrink-0">
                     {item.badge}
                   </span>
                 )}
@@ -92,7 +92,7 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
 
         {!collapsed && (
           <>
-            <div className="px-3 pb-1.5 pt-5 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+            <div className="px-3 pb-1.5 pt-5 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
               Recent Calls
             </div>
             {RECENT_CALLS.map(call => (
@@ -104,7 +104,7 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
                      style={{ fontFamily: 'JetBrains Mono, monospace' }}>
                   {call.id}
                 </div>
-                <div className="text-[10px] text-muted-foreground">{call.time}</div>
+                <div className="text-xs text-muted-foreground">{call.time}</div>
               </button>
             ))}
           </>
@@ -129,13 +129,13 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
         <div className={`mt-2 flex items-center rounded-lg bg-surface-elevated border border-border ${
           collapsed ? 'justify-center px-0 py-2' : 'gap-2.5 px-3 py-2.5'
         }`}>
-          <div className="size-7 rounded-full bg-gradient-to-br from-accent-cyan to-primary grid place-items-center text-[11px] font-bold text-primary-foreground shrink-0">
+          <div className="size-7 rounded-full bg-gradient-to-br from-accent-cyan to-primary grid place-items-center text-xs font-bold text-primary-foreground shrink-0">
             LB
           </div>
           {!collapsed && (
             <div className="flex-1 min-w-0">
               <div className="text-xs lg:text-sm font-semibold truncate text-foreground">Lee Ben Shimon</div>
-              <div className="text-[10px] text-muted-foreground truncate">Sales Analyst</div>
+              <div className="text-xs text-muted-foreground truncate">Sales Analyst</div>
             </div>
           )}
         </div>

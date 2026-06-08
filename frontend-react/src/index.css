@@ -47,6 +47,20 @@
   border-radius: 6px;
 }
 
+/*
+  Responsive root font-size: scales from 15 px on mobile up to 19 px on
+  large monitors. Because every Tailwind text-* utility uses rem, the entire
+  type scale—headings, labels, badges, inputs—grows proportionally with the
+  viewport without touching individual components.
+    320 px  →  18 px
+    768 px  →  21.1 px
+    1024 px →  23.2 px
+    1113 px+ → 24 px  (clamped)
+*/
+html {
+  font-size: clamp(18px, 0.8vw + 15px, 24px);
+}
+
 body {
   margin: 0;
   background: #080c14;

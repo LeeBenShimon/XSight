@@ -29,7 +29,7 @@ export default function SplashScreen({ onDone }) {
           <h1 className="font-display font-bold text-3xl tracking-tight text-foreground">
             X<span className="gradient-text">Sight</span>
           </h1>
-          <p className="text-[11px] text-muted-foreground uppercase tracking-[0.3em]">
+          <p className="text-xs text-muted-foreground uppercase tracking-[0.3em]">
             Turn Past Calls Into Future Wins
           </p>
         </div>

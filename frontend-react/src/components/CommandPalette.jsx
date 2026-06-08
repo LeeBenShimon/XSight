@@ -91,7 +91,7 @@ export default function CommandPalette({ calls = [], onClose, onNavigate, onSele
             placeholder="Search pages, calls, reps, products…"
             className="flex-1 bg-transparent py-3.5 text-sm lg:text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
           />
-          <kbd className="text-[10px] px-1.5 py-0.5 rounded border border-border bg-surface text-muted-foreground shrink-0">esc</kbd>
+          <kbd className="text-xs px-1.5 py-0.5 rounded border border-border bg-surface text-muted-foreground shrink-0">esc</kbd>
         </div>
 
         {/* Results */}
@@ -101,14 +101,14 @@ export default function CommandPalette({ calls = [], onClose, onNavigate, onSele
           )}
 
           {results.some(r => r.type === 'page') && (
-            <div className="px-2 pt-1 pb-1 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">Pages</div>
+            <div className="px-2 pt-1 pb-1 text-xs font-semibold text-muted-foreground uppercase tracking-widest">Pages</div>
           )}
           {results.map((item, i) => {
             const isFirstCall = item.type === 'call' && results[i - 1]?.type === 'page'
             return (
               <div key={item.type === 'page' ? `p-${item.id}` : `c-${item.call_id}`}>
                 {isFirstCall && (
-                  <div className="px-2 pt-3 pb-1 text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">Calls</div>
+                  <div className="px-2 pt-3 pb-1 text-xs font-semibold text-muted-foreground uppercase tracking-widest">Calls</div>
                 )}
                 <button
                   data-idx={i}
@@ -132,7 +132,7 @@ export default function CommandPalette({ calls = [], onClose, onNavigate, onSele
                     <>
                       <span className="text-sm font-semibold text-foreground" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{item.call_id}</span>
                       <span className="text-xs text-muted-foreground truncate">{item.employee_name} · {item.product_name}</span>
-                      <span className={`text-[11px] font-semibold ml-auto shrink-0 ${item.sale_result === 'Sale' ? 'text-success' : 'text-muted-foreground'}`}>
+                      <span className={`text-xs font-semibold ml-auto shrink-0 ${item.sale_result === 'Sale' ? 'text-success' : 'text-muted-foreground'}`}>
                         {item.sale_result}
                       </span>
                     </>
@@ -144,7 +144,7 @@ export default function CommandPalette({ calls = [], onClose, onNavigate, onSele
         </div>
 
         {/* Footer hints */}
-        <div className="flex items-center gap-4 px-4 py-2.5 border-t border-border text-[11px] text-muted-foreground">
+        <div className="flex items-center gap-4 px-4 py-2.5 border-t border-border text-xs text-muted-foreground">
           <span className="flex items-center gap-1"><ArrowUp className="size-3" /><ArrowDown className="size-3" /> navigate</span>
           <span className="flex items-center gap-1"><CornerDownLeft className="size-3" /> open</span>
         </div>

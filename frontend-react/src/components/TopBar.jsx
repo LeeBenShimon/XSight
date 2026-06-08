@@ -31,7 +31,7 @@ export default function TopBar({ onNewChat, onMobileMenuOpen, onOpenSearch }) {
       >
         <Search className="size-4 shrink-0" />
         <span className="text-sm lg:text-base truncate">Search calls, reps, products…</span>
-        <kbd className="ml-auto text-[10px] px-1.5 py-0.5 rounded border border-border bg-surface
+        <kbd className="ml-auto text-xs px-1.5 py-0.5 rounded border border-border bg-surface
                         text-muted-foreground hidden lg:flex items-center shrink-0">
           ⌘K
         </kbd>
