@@ -4,9 +4,10 @@ import logging
 from flask import Flask, send_from_directory
 from dotenv import load_dotenv
 
-load_dotenv()  # read .env before importing anything that needs env vars
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 
 from backend.routes.chat_routes import chat_bp  # noqa: E402
+from backend.routes.upload_routes import upload_bp  # noqa: E402
 
 
 def create_app() -> Flask:
@@ -20,6 +21,7 @@ def create_app() -> Flask:
     app = Flask(__name__, static_folder=dist, static_url_path="")
 
     app.register_blueprint(chat_bp)
+    app.register_blueprint(upload_bp)
 
     @app.route("/")
     def index():

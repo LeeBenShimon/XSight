@@ -5,7 +5,7 @@ from flask import Blueprint, request, jsonify
 
 from backend.services.metadata_service import MetadataService, MetadataServiceError
 from backend.services.analytics_service import AnalyticsService
-from backend.services.bedrock_service import BedrockService, BedrockServiceError
+from backend.services.bedrock_agent_service import BedrockAgentService, BedrockAgentServiceError
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ def _get_services():
         _metadata = MetadataService()
         _analytics = AnalyticsService(_metadata)
     if _bedrock is None:
-        _bedrock = BedrockService()
+        _bedrock = BedrockAgentService()
     return _metadata, _analytics, _bedrock
 
 
@@ -154,9 +154,9 @@ def chat():
     except MetadataServiceError as exc:
         logger.error("Metadata init failed: %s", exc)
         return jsonify({"error": f"Data not available: {exc}"}), 500
-    except BedrockServiceError as exc:
-        logger.error("Bedrock init failed: %s", exc)
-        return jsonify({"error": f"Bedrock not available: {exc}"}), 502
+    except BedrockAgentServiceError as exc:
+        logger.error("Bedrock Agent init failed: %s", exc)
+        return jsonify({"error": f"Bedrock Agent not available: {exc}"}), 502
 
     # 1. Try the analytics path if the question looks statistical.
     if _looks_statistical(question):
@@ -172,8 +172,8 @@ def chat():
         result = bedrock.ask_question(question)
         result["source_engine"] = "bedrock"
         return jsonify(result), 200
-    except BedrockServiceError as exc:
-        logger.warning("Bedrock error: %s", exc)
+    except BedrockAgentServiceError as exc:
+        logger.warning("Bedrock Agent error: %s", exc)
         return jsonify({"error": str(exc)}), 502
     except Exception:  # noqa: BLE001
         logger.exception("Unexpected error in /api/chat")
