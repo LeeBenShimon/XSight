@@ -1,8 +1,9 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import {
   ArrowLeft, FileText, User, Calendar, Package,
   Clock, TrendingUp, AlertCircle, CheckCircle,
   XCircle, Target, Lightbulb, BarChart2, Search, ChevronRight,
+  UploadCloud, Loader2,
 } from 'lucide-react'
 
 function formatDuration(secs) {
@@ -11,14 +12,17 @@ function formatDuration(secs) {
 }
 
 function SalesBadge({ result }) {
-  const ok = result === 'Sale'
+  const ok      = result === 'Sale'
+  const pending = result === 'Pending'
   return (
     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${
-      ok
+      pending
+        ? 'bg-warning/15 text-warning border-warning/30'
+        : ok
         ? 'bg-success/15 text-success border-success/30'
         : 'bg-destructive/15 text-destructive border-destructive/30'
     }`}>
-      {ok ? <CheckCircle className="size-3" /> : <XCircle className="size-3" />}
+      {pending ? <Clock className="size-3" /> : ok ? <CheckCircle className="size-3" /> : <XCircle className="size-3" />}
       {result}
     </span>
   )
@@ -70,7 +74,26 @@ function TranscriptLine({ line }) {
 
 // ── Call detail view ──────────────────────────────────────────────────────────
 function CallDetail({ call, onBack }) {
-  const txLines = call.transcript ? call.transcript.split('\n').filter(l => l.trim()) : []
+  const [fetched, setFetched]   = useState(null)
+  const [loadingTx, setLoadingTx] = useState(false)
+
+  // Analyzed calls (from the CSV) carry no transcript, so fetch it from S3 on
+  // open. Calls that already have inline transcript text skip the request.
+  useEffect(() => {
+    if (call.transcript) { setFetched(null); return }
+    let cancelled = false
+    setLoadingTx(true)
+    setFetched(null)
+    fetch(`/api/calls/${encodeURIComponent(call.call_id)}/transcript`)
+      .then(r => (r.ok ? r.text() : ''))
+      .then(text => { if (!cancelled) setFetched(text) })
+      .catch(() => { if (!cancelled) setFetched('') })
+      .finally(() => { if (!cancelled) setLoadingTx(false) })
+    return () => { cancelled = true }
+  }, [call.call_id, call.transcript])
+
+  const transcriptText = call.transcript || fetched || ''
+  const txLines = transcriptText ? transcriptText.split('\n').filter(l => l.trim()) : []
 
   const meta = [
     { icon: User,     label: 'Agent',    value: call.employee_name },
@@ -156,14 +179,20 @@ function CallDetail({ call, onBack }) {
         ))}
 
         {/* Transcript */}
-        {txLines.length > 0 && (
+        {(loadingTx || txLines.length > 0) && (
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
               <FileText className="size-3.5" />Transcript
             </div>
-            <div className="glass rounded-xl p-4 space-y-3">
-              {txLines.map((line, i) => <TranscriptLine key={i} line={line} />)}
-            </div>
+            {loadingTx ? (
+              <div className="glass rounded-xl p-4 flex items-center gap-2 text-sm text-muted-foreground">
+                <Loader2 className="size-4 animate-spin" />Loading transcript…
+              </div>
+            ) : (
+              <div className="glass rounded-xl p-4 space-y-3">
+                {txLines.map((line, i) => <TranscriptLine key={i} line={line} />)}
+              </div>
+            )}
           </div>
         )}
 
@@ -173,60 +202,104 @@ function CallDetail({ call, onBack }) {
 }
 
 // ── List row ────────────────────────────────────────────────────────────────
+// Renders either a full analyzed call or, when the file exists in S3 but has no
+// analyzed metadata yet, a compact "Pending" row (filename + upload date).
 function CallRow({ call, onClick }) {
-  const ok = call.sale_result === 'Sale'
+  const ok      = call.sale_result === 'Sale'
+  const pending = call._pending
+
   return (
     <button
       onClick={onClick}
       className="group w-full glass rounded-xl px-3 sm:px-4 py-3 flex items-center gap-3 sm:gap-4
                  hover:border-primary/40 hover:bg-primary/5 transition-all text-left"
     >
-      {/* Icon + ID */}
+      {/* Icon */}
       <div className="size-9 rounded-lg bg-primary/10 border border-primary/20 grid place-items-center shrink-0
                       group-hover:bg-primary/20 transition-colors">
         <FileText className="size-4 text-primary" />
       </div>
-      <div className="min-w-0 w-28 sm:w-36 shrink-0">
-        <div className="text-sm font-semibold text-foreground truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-          {call.call_id}
-        </div>
-        <div className="text-[11px] text-muted-foreground truncate">{call.product_name}</div>
-      </div>
 
-      {/* Agent — hidden on mobile */}
-      <div className="hidden md:block min-w-0 flex-1">
-        <div className="text-sm text-foreground/90 truncate">{call.employee_name}</div>
-        <div className="text-[11px] text-muted-foreground truncate">{call.team_name}</div>
-      </div>
+      {pending ? (
+        <>
+          {/* Filename */}
+          <div className="min-w-0 flex-1">
+            <div className="text-sm font-semibold text-foreground truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              {call._filename ?? `${call.call_id}.txt`}
+            </div>
+            <div className="text-[11px] text-muted-foreground truncate">Awaiting analysis</div>
+          </div>
 
-      {/* Date — lg+ */}
-      <div className="hidden lg:flex items-center gap-1.5 text-xs text-muted-foreground w-24 shrink-0">
-        <Calendar className="size-3" />{call.call_date}
-      </div>
+          {/* Upload date — sm+ */}
+          {call._uploadedAt && (
+            <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground shrink-0">
+              <Calendar className="size-3" />{formatDate(call._uploadedAt)}
+            </div>
+          )}
 
-      {/* Duration — sm+ */}
-      <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground w-16 shrink-0">
-        <Clock className="size-3" />{formatDuration(call.duration_seconds)}
-      </div>
+          {/* Pending badge + chevron */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <span className="inline-flex items-center justify-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border
+                             bg-warning/15 text-warning border-warning/30">
+              <Clock className="size-3" />
+              <span className="hidden sm:inline">Pending</span>
+            </span>
+            <ChevronRight className="size-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" />
+          </div>
+        </>
+      ) : (
+        <>
+          {/* ID + product */}
+          <div className="min-w-0 w-28 sm:w-36 shrink-0">
+            <div className="text-sm font-semibold text-foreground truncate" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+              {call.call_id}
+            </div>
+            <div className="text-[11px] text-muted-foreground truncate">{call.product_name}</div>
+          </div>
 
-      {/* Perf score — xl+ */}
-      <div className="hidden xl:flex items-center gap-1.5 w-20 shrink-0" title="Performance score">
-        <Target className="size-3 text-muted-foreground" />
-        <span className="text-xs font-semibold text-foreground/90">{call.agent_performance_score}/5</span>
-      </div>
+          {/* Agent — hidden on mobile */}
+          <div className="hidden md:block min-w-0 flex-1">
+            <div className="text-sm text-foreground/90 truncate">{call.employee_name}</div>
+            <div className="text-[11px] text-muted-foreground truncate">{call.team_name}</div>
+          </div>
 
-      {/* Result + chevron */}
-      <div className="ml-auto flex items-center gap-2 sm:gap-3 shrink-0">
-        <span className={`inline-flex items-center justify-center gap-1 w-20 py-0.5 rounded-full text-[11px] font-semibold border ${
-          ok ? 'bg-success/15 text-success border-success/30' : 'bg-destructive/15 text-destructive border-destructive/30'
-        }`}>
-          {ok ? <CheckCircle className="size-3" /> : <XCircle className="size-3" />}
-          <span className="hidden sm:inline">{call.sale_result}</span>
-        </span>
-        <ChevronRight className="size-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" />
-      </div>
+          {/* Date — lg+ */}
+          <div className="hidden lg:flex items-center gap-1.5 text-xs text-muted-foreground w-24 shrink-0">
+            <Calendar className="size-3" />{call.call_date}
+          </div>
+
+          {/* Duration — sm+ */}
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground w-16 shrink-0">
+            <Clock className="size-3" />{formatDuration(call.duration_seconds)}
+          </div>
+
+          {/* Perf score — xl+ */}
+          <div className="hidden xl:flex items-center gap-1.5 w-20 shrink-0" title="Performance score">
+            <Target className="size-3 text-muted-foreground" />
+            <span className="text-xs font-semibold text-foreground/90">{call.agent_performance_score}/5</span>
+          </div>
+
+          {/* Result + chevron */}
+          <div className="ml-auto flex items-center gap-2 sm:gap-3 shrink-0">
+            <span className={`inline-flex items-center justify-center gap-1 w-20 py-0.5 rounded-full text-[11px] font-semibold border ${
+              ok ? 'bg-success/15 text-success border-success/30' : 'bg-destructive/15 text-destructive border-destructive/30'
+            }`}>
+              {ok ? <CheckCircle className="size-3" /> : <XCircle className="size-3" />}
+              <span className="hidden sm:inline">{call.sale_result}</span>
+            </span>
+            <ChevronRight className="size-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all" />
+          </div>
+        </>
+      )}
     </button>
   )
+}
+
+function formatDate(iso) {
+  return new Date(iso).toLocaleString(undefined, {
+    year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+  })
 }
 
 const FILTERS = [
@@ -235,20 +308,179 @@ const FILTERS = [
   { id: 'No Sale', label: 'Lost' },
 ]
 
+// Build a placeholder call entry from an S3 file record (GET /api/calls) that
+// has no analyzed metadata yet. Flagged _pending so the UI styles it as such.
+function pendingCallFromFile(file) {
+  return {
+    call_id:                    file.name.replace(/\.txt$/i, ''),
+    _filename:                  file.name,
+    _uploadedAt:                file.last_modified,
+    _size:                      file.size,
+    product_name:               '—',
+    employee_name:              '—',
+    team_name:                  '—',
+    call_date:                  file.last_modified ? new Date(file.last_modified).toISOString().slice(0, 10) : '',
+    duration_seconds:           0,
+    sale_result:                'Pending',
+    agent_performance_score:    0,
+    objection_handling_quality: 0,
+    closing_attempt:            'no',
+    call_summary:               'This call exists in storage but has not been analyzed yet.',
+    missed_opportunity:         '—',
+    success_failure_reason:     '—',
+    recommended_improvement:    '—',
+    transcript:                 '',
+    _pending: true,
+  }
+}
+
+// ── Upload section ────────────────────────────────────────────────────────────
+function UploadSection({ onUploaded }) {
+  const [file, setFile]           = useState(null)
+  const [uploading, setUploading] = useState(false)
+  const [status, setStatus]       = useState(null)  // { type: 'success'|'error', message }
+  const inputRef = useRef(null)
+
+  const pickFile = (e) => {
+    const f = e.target.files?.[0] ?? null
+    setStatus(null)
+    if (f && !f.name.toLowerCase().endsWith('.txt')) {
+      setFile(null)
+      setStatus({ type: 'error', message: 'Only .txt files are allowed.' })
+      if (inputRef.current) inputRef.current.value = ''
+      return
+    }
+    setFile(f)
+  }
+
+  const upload = async () => {
+    if (!file) return
+    setUploading(true)
+    setStatus(null)
+
+    try {
+      const body = new FormData()
+      body.append('file', file)
+      const res  = await fetch('/upload', { method: 'POST', body })
+      const data = await res.json().catch(() => ({}))
+      if (res.ok) {
+        setStatus({ type: 'success', message: data.message || `Uploaded ${file.name}.` })
+        onUploaded?.(file)
+        setFile(null)
+        if (inputRef.current) inputRef.current.value = ''
+      } else {
+        setStatus({ type: 'error', message: data.error || 'Upload failed.' })
+      }
+    } catch {
+      setStatus({ type: 'error', message: 'Network error during upload.' })
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  return (
+    <div className="glass rounded-xl p-3 flex flex-col gap-2.5">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2.5">
+        <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider shrink-0">
+          <UploadCloud className="size-4 text-primary" />
+          Upload transcript
+        </div>
+
+        {/* File picker — styled label wrapping a hidden input */}
+        <label className="flex-1 min-w-0 h-10 flex items-center px-3 rounded-xl bg-input border border-border
+                          text-sm text-foreground cursor-pointer hover:border-primary/50 transition-colors">
+          <input
+            ref={inputRef}
+            type="file"
+            accept=".txt"
+            onChange={pickFile}
+            className="hidden"
+          />
+          <span className={`truncate ${file ? 'text-foreground' : 'text-muted-foreground'}`}>
+            {file ? file.name : 'Choose a .txt file…'}
+          </span>
+        </label>
+
+        <button
+          onClick={upload}
+          disabled={!file || uploading}
+          className="h-10 px-4 rounded-xl text-sm font-medium border transition-all shrink-0
+                     inline-flex items-center justify-center gap-1.5
+                     bg-primary/15 text-primary border-primary/30 hover:bg-primary/25
+                     disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-primary/15"
+        >
+          {uploading ? <Loader2 className="size-4 animate-spin" /> : <UploadCloud className="size-4" />}
+          {uploading ? 'Uploading…' : 'Upload'}
+        </button>
+      </div>
+
+      {status && (
+        <div className={`flex items-center gap-1.5 text-xs font-medium ${
+          status.type === 'success' ? 'text-success' : 'text-destructive'
+        }`}>
+          {status.type === 'success'
+            ? <CheckCircle className="size-3.5 shrink-0" />
+            : <AlertCircle className="size-3.5 shrink-0" />}
+          {status.message}
+        </div>
+      )}
+    </div>
+  )
+}
+
 // ── Main page ─────────────────────────────────────────────────────────────────
 export default function DataSourcesPage({ focusCallId, onFocusConsumed }) {
-  const [calls, setCalls]       = useState([])
-  const [loading, setLoading]   = useState(true)
+  const [analyzed, setAnalyzed] = useState([])   // analyzed metadata (GET /api/analyzed-calls)
+  const [s3Files, setS3Files]   = useState([])   // raw file list (GET /api/calls)
+  const [loadingAnalyzed, setLoadingAnalyzed] = useState(true)
+  const [loadingFiles, setLoadingFiles]       = useState(true)
   const [selected, setSelected] = useState(null)
   const [query, setQuery]       = useState('')
   const [filter, setFilter]     = useState('all')
 
+  // Analyzed metadata — read live from the CSV in S3 so freshly processed
+  // uploads show up as full rows after a refresh.
   useEffect(() => {
-    fetch('/calls-data.json')
+    fetch('/api/analyzed-calls')
       .then(r => r.json())
-      .then(data => { setCalls(data); setLoading(false) })
-      .catch(() => setLoading(false))
+      .then(data => setAnalyzed(Array.isArray(data) ? data : []))
+      .catch(() => {})
+      .finally(() => setLoadingAnalyzed(false))
   }, [])
+
+  // S3 file list — re-runnable so we can refresh after an upload.
+  const loadFiles = useCallback(() => {
+    setLoadingFiles(true)
+    fetch('/api/calls')
+      .then(r => r.json())
+      .then(data => { if (Array.isArray(data)) setS3Files(data) })
+      .catch(() => {})
+      .finally(() => setLoadingFiles(false))
+  }, [])
+  useEffect(() => { loadFiles() }, [loadFiles])
+
+  const loading = loadingAnalyzed || loadingFiles
+
+  // After a successful upload: optimistically put the new file on top, then
+  // reconcile with the server (the file has no analyzed metadata yet, so it
+  // surfaces as a "Pending" row).
+  const handleUploaded = (file) => {
+    setS3Files(prev => [
+      { name: file.name, size: file.size, last_modified: new Date().toISOString() },
+      ...prev.filter(f => f.name !== file.name),
+    ])
+    loadFiles()
+  }
+
+  // The unified list: S3 files with no analyzed metadata become "Pending" rows
+  // (newest first, on top); analyzed calls follow in their natural order.
+  const calls = useMemo(() => {
+    const analyzedIds = new Set(analyzed.map(c => c.call_id))
+    const pending = s3Files
+      .filter(f => !analyzedIds.has(f.name.replace(/\.txt$/i, '')))
+      .map(pendingCallFromFile)
+    return [...pending, ...analyzed]
+  }, [analyzed, s3Files])
 
   // The detail to show: an explicit row click wins; otherwise the call the
   // command palette navigated us to (derived in render — no effect needed).
@@ -265,9 +497,9 @@ export default function DataSourcesPage({ focusCallId, onFocusConsumed }) {
       if (filter !== 'all' && c.sale_result !== filter) return false
       if (!q) return true
       return (
-        c.call_id.toLowerCase().includes(q) ||
-        c.employee_name.toLowerCase().includes(q) ||
-        c.product_name.toLowerCase().includes(q)
+        (c.call_id || '').toLowerCase().includes(q) ||
+        (c.employee_name || '').toLowerCase().includes(q) ||
+        (c.product_name || '').toLowerCase().includes(q)
       )
     })
   }, [calls, query, filter])
@@ -322,9 +554,12 @@ export default function DataSourcesPage({ focusCallId, onFocusConsumed }) {
             ))}
           </div>
         </div>
+
+        {/* Upload */}
+        <UploadSection onUploaded={handleUploaded} />
       </div>
 
-      {/* Call list */}
+      {/* Unified call list */}
       <div className="flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8 py-4">
         {loading && (
           <div className="flex items-center justify-center h-40 text-muted-foreground text-sm">
