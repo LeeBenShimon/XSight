@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Sparkles } from 'lucide-react'
+import logoSvg from '../assets/logo.png'
 
 export default function SplashScreen({ onDone }) {
   const [fading, setFading] = useState(false)
@@ -20,9 +20,7 @@ export default function SplashScreen({ onDone }) {
         {/* Logo with ambient glow */}
         <div className="relative">
           <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-accent-cyan blur-2xl opacity-60 animate-pulse" />
-          <div className="relative size-20 rounded-2xl bg-gradient-to-br from-primary to-accent-cyan grid place-items-center shadow-glow">
-            <Sparkles className="size-10 text-primary-foreground" strokeWidth={2.5} />
-          </div>
+          <img src={logoSvg} alt="XSight logo" className="relative size-20 rounded-2xl shadow-glow" />
         </div>
 
         <div className="text-center space-y-1">

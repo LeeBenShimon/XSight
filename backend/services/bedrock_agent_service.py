@@ -3,7 +3,8 @@ import uuid
 import logging
 
 import boto3
-from botocore.exceptions import BotoCoreError, ClientError
+from botocore.config import Config
+from botocore.exceptions import BotoCoreError, ClientError, ReadTimeoutError
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +32,11 @@ class BedrockAgentService:
 
         try:
             self.client = boto3.client(
-                "bedrock-agent-runtime", region_name=self.region
+                "bedrock-agent-runtime",
+                region_name=self.region,
+                # Agent calls that invoke Lambda action groups can take well
+                # over 60 s. 300 s covers the worst-case multi-step orchestration.
+                config=Config(read_timeout=300, connect_timeout=10),
             )
         except (BotoCoreError, ClientError) as exc:
             logger.exception("Failed to create Bedrock Agent boto3 client")
@@ -105,6 +110,10 @@ class BedrockAgentService:
                     )
                     citations.append({"text": snippet[:500], "source": source})
 
+        except ReadTimeoutError as exc:
+            raise BedrockAgentServiceError(
+                "Bedrock Agent timed out — the request took too long to complete."
+            ) from exc
         except (KeyError, TypeError) as exc:
             logger.error("Unexpected Bedrock Agent response shape")
             raise BedrockAgentServiceError(

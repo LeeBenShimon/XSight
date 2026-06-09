@@ -1,7 +1,8 @@
 import {
   LayoutDashboard, MessagesSquare, FileSearch,
-  BarChart3, Database, Settings, LifeBuoy, Sparkles, X, Menu,
+  BarChart3, Database, Settings, LifeBuoy, X, Menu,
 } from 'lucide-react'
+import logoSvg from '../assets/logo.png'
 
 const NAV = [
   { id: 'overview',  icon: LayoutDashboard, label: 'Overview' },
@@ -16,11 +17,6 @@ const BOTTOM_NAV = [
   { id: 'support',  icon: LifeBuoy, label: 'Support' },
 ]
 
-const RECENT_CALLS = Array.from({ length: 12 }, (_, i) => ({
-  id: `CALL_${String(i + 1).padStart(3, '0')}`,
-  time: i === 0 ? '12 min ago' : i < 2 ? '1 hour ago' : i < 4 ? 'Yesterday' : '2 days ago',
-}))
-
 function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollapse }) {
   return (
     <>
@@ -33,13 +29,11 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
       >
         {!collapsed && (
           <>
-            <div className="size-8 rounded-lg bg-gradient-to-br from-primary to-accent-cyan grid place-items-center shadow-glow shrink-0">
-              <Sparkles className="size-4 text-primary-foreground" strokeWidth={2.5} />
-            </div>
+            <img src={logoSvg} alt="XSight logo" className="size-8 rounded-lg shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="font-display font-bold text-sm lg:text-base leading-tight text-foreground">XSight</div>
               <div className="text-xs text-muted-foreground uppercase tracking-widest">
-                
+
               </div>
             </div>
           </>
@@ -90,25 +84,6 @@ function SidebarContent({ active, setActive, onClose, collapsed, onToggleCollaps
           </button>
         ))}
 
-        {!collapsed && (
-          <>
-            <div className="px-3 pb-1.5 pt-5 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
-              Recent Calls
-            </div>
-            {RECENT_CALLS.map(call => (
-              <button
-                key={call.id}
-                className="w-full text-left px-3 py-1.5 rounded-lg hover:bg-accent transition-colors"
-              >
-                <div className="text-xs lg:text-sm font-medium text-foreground/90 truncate"
-                     style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                  {call.id}
-                </div>
-                <div className="text-xs text-muted-foreground">{call.time}</div>
-              </button>
-            ))}
-          </>
-        )}
       </nav>
 
       {/* Footer */}
