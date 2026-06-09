@@ -1,69 +1,106 @@
-# XSight
+# XSight — AI-Powered Sales Intelligence Platform
 
-### See What Drives Sales Success
+> **See What Drives Sales Success**
 
-## Overview
+XSight is an AI-powered sales intelligence platform that transforms historical sales call transcripts into actionable business insights. It combines RAG (Retrieval-Augmented Generation) with a Bedrock Agentic AI to answer natural language questions, generate personalized follow-up emails, and produce downloadable performance reports — all through a conversational chat interface.
 
-XSight is an AI-powered sales intelligence platform that transforms sales conversations into actionable insights. By analyzing historical sales calls and their outcomes, it uncovers hidden patterns, recurring objections, and the behaviors that drive successful deals.
+---
 
-The platform allows users to ask natural language questions about past sales conversations and receive evidence-based answers derived from internal company data. XSight helps sales teams learn from previous interactions, identify missed opportunities, and continuously improve performance through data-driven decision making.
+## What Problem Does XSight Solve?
+
+Sales managers lack visibility into why deals are won or lost. Reviewing calls manually is slow, incomplete, and unscalable. XSight analyzes all your sales conversations automatically and lets you ask questions in plain English.
 
 ---
 
 ## Key Features
 
-* Natural language questions over historical sales calls
-* AI-powered retrieval from an internal sales knowledge base
-* Analysis of successful and unsuccessful sales conversations
-* Customer objection discovery and categorization
-* Sales performance insights and coaching opportunities
-* Source-backed answers based on real call data
+- **Natural language Q&A** over historical sales call transcripts (RAG)
+- **Agent-powered actions** — send emails, generate reports, filter by product or agent
+- **Automated follow-up emails** — AI-generated, personalized per customer objection, sent via Amazon SES
+- **Downloadable performance reports** — saved to S3 with 7-day pre-signed URLs
+- **File upload pipeline** — upload new call transcripts → auto-analyzed by Claude → CSV updated → Knowledge Base synced
+- **Local analytics routing** — fast, deterministic answers for quantitative questions (win rates, scores)
+- **Dashboard** — visual overview of all 20+ analyzed calls
 
 ---
 
-## Example Questions
+## ️ System Architecture
 
-* What makes successful calls successful?
-* Find calls where the agent successfully handled a pricing objection.
-* Show examples of calls that failed because of price concerns.
-* Find calls where the customer was interested but still did not buy.
-* Show calls where the product was not relevant to the customer.
-* Compare successful and unsuccessful calls.
-
----
-
-## System Architecture
-
-```text
-User
-  ↓
-Flask API
-  ↓
-Amazon Bedrock Knowledge Base
-  ↓
-Retrieve Relevant Sales Calls
-  ↓
-Generate Answer
-  ↓
-Return Insight to User
 ```
+User (React Frontend)
+↓
+Flask Backend
+↓
+┌────────────────────────────────┐
+│ Local Analytics Routing │
+│ (AnalyticsService + Pandas) │
+└────────────────────────────────┘
+↓ (qualitative / action requests)
+Amazon Bedrock Agent (Claude Sonnet 4.6)
+↓ ↓
+Knowledge Base Action Groups (Lambda)
+(RAG — S3 transcripts) ├── AgentPerformance
+├── CallAnalytics
+├── FollowupEmail → SES + S3
+└── PerformanceReport → S3
+```
+
+**Routing logic:**
+- Quantitative questions (win rates, scores) → local Flask routing via AnalyticsService
+- Qualitative questions (why calls fail, coaching tips) → Bedrock Knowledge Base (RAG)
+- Action requests (emails, reports) → Bedrock Agent → Lambda Action Groups
+
+---
+
+## ️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React + Tailwind CSS |
+| Backend | Python + Flask |
+| AI Agent | Amazon Bedrock Agent (Claude Sonnet 4.6) |
+| RAG | Amazon Bedrock Knowledge Base + S3 |
+| Tools | AWS Lambda (4 Action Groups) |
+| Email | Amazon SES |
+| Storage | Amazon S3 |
+| Analytics | Pandas + CSV |
+| Deployment | Docker + EC2 |
+| Version Control | Git + GitHub |
 
 ---
 
 ## Project Structure
 
-```text
+```
 sales-call-rag-assistant/
-
-├── frontend/
+├── frontend-react/
+│ ├── src/
+│ │ ├── components/
+│ │ │ ├── ChatPage.jsx
+│ │ │ ├── DataSourcesPage.jsx
+│ │ │ ├── DashboardPage.jsx
+│ │ │ └── ...
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ └── package.json
 ├── backend/
-│   ├── routes/
-│   ├── services/
-│   └── utils/
+│ ├── routes/
+│ │ ├── chat_routes.py
+│ │ └── upload_routes.py
+│ ├── services/
+│ │ ├── bedrock_agent_service.py
+│ │ ├── analytics_service.py
+│ │ ├── metadata_service.py
+│ │ ├── s3_service.py
+│ │ └── call_processing_service.py
+│ └── utils/
 ├── data/
-│   ├── metadata/
-│   ├── transcripts/
-│   └── analytics/
+│ └── transcripts/ # 20+ sales call TXT files
+├── lambdas/
+│ ├── get_agent_performance.py
+│ ├── get_call_analytics.py
+│ ├── generate_performance_report.py
+│ └── generate_followup_email.py
 ├── app.py
 ├── requirements.txt
 ├── Dockerfile
@@ -72,118 +109,141 @@ sales-call-rag-assistant/
 
 ---
 
-## Installation
+## ️ Installation & Setup
 
-### Clone the repository
+### Prerequisites
+
+- Python 3.11+
+- Node.js 18+
+- AWS account with Bedrock, S3, SES, Lambda access
+- Docker (for containerized deployment)
+
+### 1. Clone the repository
 
 ```bash
 git clone <repository-url>
 cd sales-call-rag-assistant
 ```
 
-### Create a virtual environment
+### 2. Backend setup
 
 ```bash
 python -m venv .venv
-```
-
-### Activate the environment
-
-Windows:
-
-```bash
-.venv\Scripts\activate
-```
-
-Linux / macOS:
-
-```bash
-source .venv/bin/activate
-```
-
-### Install dependencies
-
-```bash
+source .venv/bin/activate # Linux/macOS
+.venv\Scripts\activate # Windows
 pip install -r requirements.txt
 ```
 
----
+### 3. Frontend setup
 
-## Configuration
+```bash
+cd frontend-react
+npm install
+npm run build
+```
 
-Create a `.env` file and configure your AWS Bedrock settings:
+### 4. Environment variables
+
+Create a `.env` file in the project root:
 
 ```env
-AWS_REGION=your-region
+AWS_REGION=us-east-2
+BEDROCK_AGENT_ID=your-agent-id
+BEDROCK_AGENT_ALIAS_ID=your-alias-id
 BEDROCK_KNOWLEDGE_BASE_ID=your-kb-id
+BEDROCK_KB_DATA_SOURCE_ID=your-ds-id
+METADATA_BUCKET=your-s3-bucket
+METADATA_KEY=transcripts/sales_calls_metadata.csv
+CALLS_PREFIX=transcripts/
+EMAILS_PREFIX=emails/
+REPORTS_PREFIX=reports/
+SENDER_EMAIL=your-verified-ses-email
+DEMO_RECIPIENT=your-email
+BEDROCK_MODEL_ID=us.anthropic.claude-haiku-4-5-20251001-v1:0
 ```
 
 ---
 
 ## Running the Application
 
-### Local Development
+### Local development
 
 ```bash
 python app.py
 ```
 
-The application will be available at:
+The application will be available at `http://localhost:5000`
 
-```text
-http://localhost:5000
-```
-
----
-
-## Docker
-
-Build the image:
+### Docker
 
 ```bash
 docker build -t xsight .
-```
-
-Run the container:
-
-```bash
-docker run -p 5000:5000 xsight
+docker run -p 5000:5000 --env-file .env xsight
 ```
 
 ---
 
-## Screenshots
+## Example Questions
 
-### Dashboard
+### RAG — Qualitative insights
+```
+Why do calls fail when customers raise pricing objections?
+What makes Sarah Levi's calls successful?
+Show examples of calls where timing was the main objection
+```
 
-*(Add screenshot here)*
+### Analytics — Quantitative stats
+```
+How is Daniel Cohen performing?
+What is the win rate of each agent?
+Compare successful vs unsuccessful calls
+```
 
-### Chat Interface
-
-*(Add screenshot here)*
-
-### Knowledge Base Results
-
-*(Add screenshot here)*
+### Actions — Agent + Lambda
+```
+Send follow-up emails to all customers who didn't buy this month
+Export a downloadable performance report for Sarah Levi
+Which agent performs best with CloudSecure?
+```
 
 ---
 
-## Future Improvements
+## Lambda Action Groups
 
-* Advanced sales analytics dashboard
-* Automatic call ingestion pipeline
-* Trend analysis and forecasting
-* Agent performance benchmarking
-* Exportable reports and insights
+| Action Group | Function | Description |
+|---|---|---|
+| AgentPerformance | `get_agent_performance` | Win rates, scores, optional product filter |
+| CallAnalytics | `get_call_analytics` | Success comparison, product performance, overall stats |
+| PerformanceReport | `generate_performance_report` | Generates JSON report, saves to S3, returns pre-signed URL |
+| FollowupEmail | `generate_followup_email` | AI-generated personalized emails, sent via SES + saved to S3 |
 
 ---
 
-## Author
+## ️ AWS Resources
+
+| Resource | Purpose |
+|---|---|
+| Amazon Bedrock Agent | Orchestration + reasoning (Claude Sonnet 4.6) |
+| Amazon Bedrock Knowledge Base | RAG over sales call transcripts |
+| Amazon S3 | Transcripts, CSV metadata, reports, emails |
+| AWS Lambda (×4) | Action Groups for analytics and automation |
+| Amazon SES | Follow-up email delivery |
+| Amazon EC2 | Docker container hosting |
+
+---
+
+## ️ AWS Cleanup
+
+After testing, the following resources were deleted to avoid unnecessary costs:
+- EC2 instance (stopped and terminated after demo)
+- Bedrock Knowledge Base and data source
+- S3 bucket contents
+- Lambda functions
+- SES verified identities
+
+---
+
+## ‍ Author
 
 **Lee Ben Shimon**
-
----
-
-### XSight
-
-**See What Drives Sales Success**
+AI-Augmented Software Engineering
